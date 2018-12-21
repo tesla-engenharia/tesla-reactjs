@@ -34,7 +34,7 @@ export const Content = styled.div`
       }
 
       img {
-        height: 23px;
+        height: 21px;
       }
     }
   }
