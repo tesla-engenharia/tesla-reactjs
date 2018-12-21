@@ -7,6 +7,7 @@
   },
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
+    "import/no-unresolved": 1,
     "import/no-extraneous-dependencies": 0,
     "react/jsx-boolean-value": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],

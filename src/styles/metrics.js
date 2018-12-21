@@ -1,5 +1,5 @@
 export default {
-  baseMargin: '10px',
-  basePadding: '20px',
-  baseRadius: '3px',
+  baseMargin: 10,
+  basePadding: 20,
+  baseRadius: 3,
 };
