@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable import/no-unresolved */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -45,11 +47,12 @@ class Header extends Component {
 
   componentDidMount() {
     const { location } = this.props;
-    console.tron.log(location.pathname);
 
     const active = menuItems.find(menuItem => (menuItem.page === location.pathname));
 
-    this.setState({ active });
+    console.tron.log(active);
+
+    active !== undefined ? this.setState({ active }) : this.setState({ active: { name: '', page: '' } });
   }
 
   handleClick(menuItem) {

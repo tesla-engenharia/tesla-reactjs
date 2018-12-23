@@ -67,8 +67,8 @@ export const Navigation = styled.div`
       border-bottom-width: 2px;
       border-bottom-color: rgba(255, 255, 255, 0);
 
-      transition: border-bottom-color 0.3s, padding-bottom 0.3s;
-      -webkit-transition: border-bottom-color 0.3s, padding-bottom 0.3s;
+      transition: border-bottom-color 0.3s, padding-bottom 0.3s, color 0.3s;
+      -webkit-transition: border-bottom-color 0.3s, padding-bottom 0.3s, color 0.3s;
 
       transition-timing-function: ease-in-out;
 
@@ -78,6 +78,7 @@ export const Navigation = styled.div`
 
       &:hover {
         border-bottom-color: rgba(255, 255, 255, 1);
+        color: ${colors.white};
         padding-bottom: 5px;
       }
     }
