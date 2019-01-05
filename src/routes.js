@@ -7,10 +7,12 @@ import Blog from './pages/Blog';
 import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
+import SideDrawer from './components/SideDrawer';
 
 const Routes = () => (
   <BrowserRouter>
-    <div>
+    <div style={{ height: '100%' }}>
+      <SideDrawer />
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />

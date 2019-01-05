@@ -1,35 +1,24 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/no-unresolved */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { Link, withRouter } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 
-import { colors } from '~/styles';
+import menuItems from '~/config/MenuItems';
+import { SocialMedia as socialMedia } from '~/config/SocialMedia';
+
+import { FaBars } from 'react-icons/fa';
 
 import Tau from '~/assets/tau.png';
 
-import facebook from '~/assets/social_Face.png';
-import instagram from '~/assets/social_Insta.png';
-import twitter from '~/assets/social_Twitter.png';
-import youtube from '~/assets/social_youtube.png';
-
-import { Container, Content, Navigation } from './styles';
-
-const menuItems = [
-  {
-    name: 'Início',
-    page: '/',
-  },
-  {
-    name: 'Serviços',
-    page: '/servicos',
-  },
-  {
-    name: 'Blog',
-    page: '/blog',
-  },
-];
+import { colors, metrics } from '~/styles';
+import {
+  Bar,
+  Toolbox,
+  Navigation,
+  Social,
+  Logo,
+  Menu,
+} from './styles';
 
 class Header extends Component {
   state = {
@@ -48,12 +37,18 @@ class Header extends Component {
   componentDidMount() {
     const { location } = this.props;
 
-    const active = menuItems.find(menuItem => (menuItem.page === location.pathname));
+    const active = menuItems.find(menuItem => menuItem.page === location.pathname);
 
-    console.tron.log(active);
-
-    active !== undefined ? this.setState({ active }) : this.setState({ active: { name: '', page: '' } });
+    if (active) {
+      this.setState({ active });
+    } else {
+      this.setState({ active: { name: '', page: '' } });
+    }
   }
+
+  handleOpenSideDrawer = () => {
+    console.tron.log('Abriu a SideDrawer');
+  };
 
   handleClick(menuItem) {
     this.setState({ active: menuItem });
@@ -69,41 +64,55 @@ class Header extends Component {
     };
 
     return (
-      <Container>
-        <Content>
-          <Navigation>
-            <img src={Tau} alt="Logotipo da Tesla" />
+      <Bar>
+        <Toolbox>
+          <MediaQuery query={`(min-width: ${metrics.contentWidth}px)`}>
+            <Navigation>
+              <Logo src={Tau} alt="Logotipo da Tesla" />
 
-            <div className="menu">
-              {menuItems.map((menuItem, actualIndex) => (
-                <Link
-                  key={actualIndex}
-                  style={this.state.active.name === menuItem.name ? activeStyle : {}}
-                  onClick={() => this.handleClick(menuItem)}
-                  to={menuItem.page}
-                >
-                  {menuItem.name}
-                </Link>
+              <Menu>
+                {menuItems.map((menuItem, actualIndex) => (
+                  <Link
+                    key={actualIndex}
+                    style={this.state.active.name === menuItem.name ? activeStyle : {}}
+                    onClick={() => this.handleClick(menuItem)}
+                    to={menuItem.page}
+                  >
+                    {menuItem.name}
+                  </Link>
+                ))}
+              </Menu>
+            </Navigation>
+
+            <Social>
+              {socialMedia.map(item => (
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  <img src={item.icon} alt={item.alt} />
+                </a>
               ))}
-            </div>
-          </Navigation>
+            </Social>
+          </MediaQuery>
 
-          <div className="social">
-            <a href="https://www.facebook.com/TeslaEJ/" target="_blank" rel="noopener noreferrer">
-              <img src={facebook} alt="Facebook da Tesla" />
-            </a>
-            <a href="https://www.instagram.com/teslaej/" target="_blank" rel="noopener noreferrer">
-              <img src={instagram} alt="Instagram da Tesla" />
-            </a>
-            <a href="/" target="_blank">
-              <img src={twitter} alt="Twitter da Tesla" />
-            </a>
-            <a href="/" target="_blank">
-              <img src={youtube} alt="Canal do Youtube da Tesla" />
-            </a>
-          </div>
-        </Content>
-      </Container>
+          <MediaQuery query={`(max-width: ${metrics.contentWidth}px)`}>
+            <Navigation>
+              <Logo src={Tau} alt="Logotipo da Tesla" mobile={true} />
+              <button type="button" onClick={this.handleOpenSideDrawer}>
+                <FaBars />
+              </button>
+            </Navigation>
+
+            <MediaQuery query="(min-width: 350px)">
+              <Social>
+                {socialMedia.map(item => (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    <img src={item.icon} alt={item.alt} />
+                  </a>
+                ))}
+              </Social>
+            </MediaQuery>
+          </MediaQuery>
+        </Toolbox>
+      </Bar>
     );
   }
 }
