@@ -18,8 +18,9 @@ export const Drawer = styled.nav`
   justify-content: flex-start;
   padding-top: ${metrics.basePadding}px;
 
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-out;
+  transform: ${props => (props.open ? 'translateX(0)' : 'translateX(-105%)')};
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
 
   a {
     text-decoration: none;
@@ -47,8 +48,10 @@ export const Backdrop = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: ${colors.lessDarkTransparent};
+  background-color: ${props => (props.open ? colors.lessDarkTransparent : colors.transparent)};
   z-index: 100;
 
-  display: none;
+  display: ${props => (props.open ? 'absolute' : 'none')};
+
+  transition: background-color 0.5s ease-in-out;
 `;

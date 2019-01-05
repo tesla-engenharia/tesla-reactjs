@@ -29,6 +29,7 @@ class Header extends Component {
       pathname: PropTypes.string.isRequired,
     }).isRequired,
     updateActive: PropTypes.func.isRequired,
+    openSideDrawer: PropTypes.func.isRequired,
     menu: PropTypes.shape({
       pages: PropTypes.arrayOf({
         name: PropTypes.string.isRequired,
@@ -53,12 +54,9 @@ class Header extends Component {
     }
   }
 
-  componentDidUpdate() {
-
-  }
-
   handleOpenSideDrawer = () => {
     console.tron.log('Abriu a SideDrawer');
+    this.props.openSideDrawer(true);
   };
 
   handleClick = (menuItem) => {
@@ -134,4 +132,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(MenuActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
