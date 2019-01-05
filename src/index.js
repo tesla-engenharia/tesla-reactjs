@@ -3,6 +3,4 @@ import ReactDOM from 'react-dom';
 import Routes from './routes';
 import './styles/reset.css';
 
-import './config/Reactotron';
-
 ReactDOM.render(<Routes />, document.getElementById('root'));

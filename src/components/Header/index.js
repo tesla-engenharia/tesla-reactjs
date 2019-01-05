@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 
-import menuItems from '~/config/MenuItems';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as MenuActions } from '~/store/ducks/menu';
+
 import { SocialMedia as socialMedia } from '~/config/SocialMedia';
 
 import { FaBars } from 'react-icons/fa';
@@ -21,37 +24,45 @@ import {
 } from './styles';
 
 class Header extends Component {
-  state = {
-    active: {
-      name: 'Início',
-      page: '/',
-    },
-  };
-
   static propTypes = {
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
+    }).isRequired,
+    updateActive: PropTypes.func.isRequired,
+    menu: PropTypes.shape({
+      pages: PropTypes.arrayOf({
+        name: PropTypes.string.isRequired,
+        page: PropTypes.string.isRequired,
+      }).isRequired,
+      pageActive: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        page: PropTypes.string.isRequired,
+      }).isRequired,
     }).isRequired,
   };
 
   componentDidMount() {
     const { location } = this.props;
 
-    const active = menuItems.find(menuItem => menuItem.page === location.pathname);
+    const active = this.props.menu.pages.find(menuItem => menuItem.page === location.pathname);
 
     if (active) {
-      this.setState({ active });
+      this.props.updateActive(active);
     } else {
-      this.setState({ active: { name: '', page: '' } });
+      this.props.updateActive({ name: '404', page: location.pathname });
     }
+  }
+
+  componentDidUpdate() {
+
   }
 
   handleOpenSideDrawer = () => {
     console.tron.log('Abriu a SideDrawer');
   };
 
-  handleClick(menuItem) {
-    this.setState({ active: menuItem });
+  handleClick = (menuItem) => {
+    this.props.updateActive(menuItem);
   }
 
   render() {
@@ -71,10 +82,10 @@ class Header extends Component {
               <Logo src={Tau} alt="Logotipo da Tesla" />
 
               <Menu>
-                {menuItems.map((menuItem, actualIndex) => (
+                {this.props.menu.pages.map((menuItem, actualIndex) => (
                   <Link
                     key={actualIndex}
-                    style={this.state.active.name === menuItem.name ? activeStyle : {}}
+                    style={this.props.menu.pageActive.name === menuItem.name ? activeStyle : {}}
                     onClick={() => this.handleClick(menuItem)}
                     to={menuItem.page}
                   >
@@ -85,8 +96,8 @@ class Header extends Component {
             </Navigation>
 
             <Social>
-              {socialMedia.map(item => (
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
+              {socialMedia.map((item, actualIndex) => (
+                <a key={actualIndex} href={item.url} target="_blank" rel="noopener noreferrer">
                   <img src={item.icon} alt={item.alt} />
                 </a>
               ))}
@@ -103,8 +114,8 @@ class Header extends Component {
 
             <MediaQuery query="(min-width: 350px)">
               <Social>
-                {socialMedia.map(item => (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {socialMedia.map((item, actualIndex) => (
+                  <a key={actualIndex} href={item.url} target="_blank" rel="noopener noreferrer">
                     <img src={item.icon} alt={item.alt} />
                   </a>
                 ))}
@@ -117,4 +128,10 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+const mapStateToProps = state => ({
+  menu: state.menu,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(MenuActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
