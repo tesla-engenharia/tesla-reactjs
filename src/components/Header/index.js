@@ -31,10 +31,10 @@ class Header extends Component {
     updateActive: PropTypes.func.isRequired,
     openSideDrawer: PropTypes.func.isRequired,
     menu: PropTypes.shape({
-      pages: PropTypes.arrayOf({
+      pages: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         page: PropTypes.string.isRequired,
-      }).isRequired,
+      }).isRequired).isRequired,
       pageActive: PropTypes.shape({
         name: PropTypes.string.isRequired,
         page: PropTypes.string.isRequired,
