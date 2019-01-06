@@ -12,6 +12,7 @@ export const Types = {
  */
 
 const INITIAL_STATE = {
+  isAuthenticated: false,
   loading: false,
   token: '',
 };
@@ -28,6 +29,7 @@ export default function login(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         token: action.payload.token,
+        isAuthenticated: true,
       };
     default:
       return state;

@@ -23,7 +23,7 @@ class Login extends Component {
     login: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
     }).isRequired,
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object,
   };
 
   handleSubmitForm = (e) => {

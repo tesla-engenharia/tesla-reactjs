@@ -1,6 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './routes';
 import './styles/reset.css';
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+import './config/Reactotron';
+
+import { Provider } from 'react-redux';
+import store from './store';
+
+import Routes from './routes';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
+  document.getElementById('root'),
+);
