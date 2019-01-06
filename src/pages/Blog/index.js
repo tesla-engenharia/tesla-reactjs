@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { FaCircleNotch } from 'react-icons/fa';
+import '~/styles/loading.css';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as BlogActions } from '~/store/ducks/blog';
 
 import {
-  Container, Post, Title, Info,
+  Container, Post, Title, Info, Loading,
 } from './styles';
 
 class Blog extends Component {
@@ -42,7 +45,9 @@ class Blog extends Component {
     return (
       <Container>
         {loading ? (
-          <p>Carregando...</p>
+          <Loading>
+            <FaCircleNotch className="icon-spin" />
+          </Loading>
         ) : (
           this.props.blog.response.data.map(post => (
             <Post key={post.id} background={post.file.url}>
@@ -57,17 +62,6 @@ class Blog extends Component {
     );
   }
 }
-
-/**
- * {this.props.response.data.map(post => (
-          <Post key={post.id}>
-            <Title>{post.title}</Title>
-            <Info>
-              por <span>{post.user.name}</span> há {post.created_at}
-            </Info>
-          </Post>
-        ))}
- */
 
 const mapStateToProps = state => ({
   blog: state.blog,
