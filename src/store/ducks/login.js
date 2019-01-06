@@ -12,7 +12,7 @@ export const Types = {
  */
 
 const INITIAL_STATE = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem('@Tesla:token'),
   loading: false,
   token: '',
 };

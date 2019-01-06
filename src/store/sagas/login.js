@@ -14,6 +14,8 @@ export function* attempt(action) {
 
   const { token } = response.data;
 
+  localStorage.setItem('@Tesla:token', token);
+
   yield put(LoginActions.authSuccess(token));
   yield call(history.push, '/panel');
 }

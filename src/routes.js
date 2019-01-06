@@ -63,7 +63,12 @@ class Routes extends Component {
                 </Fragment>
               )}
             />
-            <Route path="/login" component={Login} />
+            <Route
+              path="/login"
+              render={props => (this.props.login.isAuthenticated ? (
+                <Redirect to={{ pathname: '/panel', state: { from: props.location } }} />
+              ) : <Login />)}
+            />
             <Route
               path="/panel"
               render={props => (this.props.login.isAuthenticated ? (
