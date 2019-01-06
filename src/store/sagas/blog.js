@@ -10,12 +10,9 @@ import { Creators as BlogActions } from '../ducks/blog';
 export function* indexPosts(action) {
   const { data } = yield call(api.get, `/posts?page=${action.payload.page}`);
 
-  console.tron.log(data);
-
   moment.locale('pt-BR');
 
   data.data.map((post) => {
-    console.tron.log(post.created_at);
     return (post.fromNow = moment(post.created_at).fromNow());
   });
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { FaCircleNotch } from 'react-icons/fa';
-import '~/styles/loading.css';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,6 +10,8 @@ import { Creators as BlogActions } from '~/store/ducks/blog';
 import {
   Container, Post, Title, Info, Loading,
 } from './styles';
+
+import '~/styles/loading.css';
 
 class Blog extends Component {
   static propTypes = {
