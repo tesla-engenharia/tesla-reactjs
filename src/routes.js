@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './config/Reactotron';
@@ -9,6 +9,7 @@ import store from './store';
 import Home from './pages/Home';
 import Servicos from './pages/Servicos';
 import Blog from './pages/Blog';
+import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
@@ -18,13 +19,49 @@ const Routes = () => (
   <Provider store={store}>
     <BrowserRouter>
       <div style={{ height: '100%' }}>
-        <SideDrawer />
-        <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/servicos" component={Servicos} />
-          <Route path="/blog" component={Blog} />
-          <Route path="*" component={NotFound} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Fragment>
+                <SideDrawer />
+                <Header />
+                <Home />
+              </Fragment>
+            )}
+          />
+          <Route
+            path="/servicos"
+            render={() => (
+              <Fragment>
+                <SideDrawer />
+                <Header />
+                <Servicos />
+              </Fragment>
+            )}
+          />
+          <Route
+            path="/blog"
+            render={() => (
+              <Fragment>
+                <SideDrawer />
+                <Header />
+                <Blog />
+              </Fragment>
+            )}
+          />
+          <Route path="/login" component={Login} />
+          <Route
+            path="*"
+            render={() => (
+              <Fragment>
+                <SideDrawer />
+                <Header />
+                <NotFound />
+              </Fragment>
+            )}
+          />
         </Switch>
       </div>
     </BrowserRouter>
