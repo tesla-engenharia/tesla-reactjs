@@ -23,11 +23,12 @@ class Login extends Component {
     login: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
     }).isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   handleSubmitForm = (e) => {
     e.preventDefault();
-    this.props.authRequest(this.state.email, this.state.password);
+    this.props.authRequest(this.state.email, this.state.password, this.props.history);
   };
 
   render() {

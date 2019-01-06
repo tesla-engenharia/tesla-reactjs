@@ -10,7 +10,10 @@ export function* attempt(action) {
     password: action.payload.password,
   });
 
+  const { history } = action.payload;
+
   const { token } = response.data;
 
   yield put(LoginActions.authSuccess(token));
+  yield call(history.push, '/panel');
 }

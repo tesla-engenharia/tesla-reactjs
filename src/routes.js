@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Servicos from './pages/Servicos';
 import Blog from './pages/Blog';
 import Login from './pages/Login';
+import Panel from './pages/Panel';
 import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
@@ -52,6 +53,7 @@ const Routes = () => (
             )}
           />
           <Route path="/login" component={Login} />
+          <Route path="/panel" component={Panel} />
           <Route
             path="*"
             render={() => (
