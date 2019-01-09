@@ -37,6 +37,8 @@ export const Post = styled.div`
 
   &:hover {
     transform: translateY(-3%);
+
+    cursor: pointer;
   }
 
   &:after {

@@ -55,6 +55,8 @@ export const Navigation = styled.div`
     height: 20px;
     width: 20px;
 
+    cursor: pointer;
+
     svg {
       width: 100%;
       height: 100%;

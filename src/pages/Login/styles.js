@@ -36,7 +36,7 @@ export const LoginBox = styled.div`
   border-radius: ${metrics.baseRadius}px;
 
   h1 {
-    margin-bottom: ${metrics.baseMargin * 2}px;
+    margin-bottom: ${metrics.baseMargin * 3}px;
   }
 
   form {
@@ -75,6 +75,7 @@ export const LoginBox = styled.div`
   a {
     text-decoration: none;
     font-size: 0.8em;
+    padding-top: ${metrics.basePadding / 2}px;
 
     color: ${colors.regular};
   }

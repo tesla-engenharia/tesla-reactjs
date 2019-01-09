@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as LoginActions } from '~/store/ducks/login';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Tau from '~/assets/tau.png';
 
 import { FaCircleNotch } from 'react-icons/fa';
@@ -24,6 +27,10 @@ class Login extends Component {
       loading: PropTypes.bool.isRequired,
     }).isRequired,
     history: PropTypes.object,
+  };
+
+  static defaultProps = {
+    history: {},
   };
 
   handleSubmitForm = (e) => {
@@ -51,6 +58,7 @@ class Login extends Component {
               placeholder="Sua senha secreta"
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
+              required
             />
             <button type="submit">
               {loading ? <FaCircleNotch className="icon-spin" /> : 'Entrar'}
@@ -58,6 +66,7 @@ class Login extends Component {
           </form>
           <a href="/">Esqueci a senha</a>
         </LoginBox>
+        <ToastContainer autoClose={3000} />
       </Container>
     );
   }
