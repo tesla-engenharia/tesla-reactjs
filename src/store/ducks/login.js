@@ -8,6 +8,7 @@ export const Types = {
   AUTH_REQUEST: 'login/AUTH_REQUEST',
   AUTH_SUCCESS: 'login/AUTH_SUCCESS',
   AUTH_FAILED: 'login/AUTH_FAILED',
+  AUTH_LOGOUT: 'login/AUTH_LOGOUT',
 };
 
 /**
@@ -40,6 +41,12 @@ export default function login(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
       };
+    case Types.AUTH_LOGOUT:
+      return {
+        ...state,
+        token: '',
+        isAuthenticated: false,
+      };
     default:
       return state;
   }
@@ -61,5 +68,8 @@ export const Creators = {
   authFailed: message => ({
     type: Types.AUTH_FAILED,
     payload: { message },
+  }),
+  authLogout: () => ({
+    type: Types.AUTH_LOGOUT,
   }),
 };

@@ -34,6 +34,8 @@ export const Item = styled.a`
   text-decoration: none;
   color: ${colors.white};
 
+  cursor: pointer;
+
   font-weight: bold;
   font-size: 1.1em;
 
