@@ -30,7 +30,7 @@ class Panel extends Component {
     e.preventDefault();
     localStorage.removeItem('@Tesla:token');
     this.props.authLogout();
-    this.props.history.push('/');
+    this.props.history.push('/login');
   };
 
   render() {

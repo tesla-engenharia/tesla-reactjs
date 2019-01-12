@@ -57,9 +57,9 @@ export default function login(state = INITIAL_STATE, action) {
  */
 
 export const Creators = {
-  authRequest: (email, password, history) => ({
+  authRequest: (email, password) => ({
     type: Types.AUTH_REQUEST,
-    payload: { email, password, history },
+    payload: { email, password },
   }),
   authSuccess: token => ({
     type: Types.AUTH_SUCCESS,

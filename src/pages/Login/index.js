@@ -26,16 +26,11 @@ class Login extends Component {
     login: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
     }).isRequired,
-    history: PropTypes.object,
-  };
-
-  static defaultProps = {
-    history: {},
   };
 
   handleSubmitForm = (e) => {
     e.preventDefault();
-    this.props.authRequest(this.state.email, this.state.password, this.props.history);
+    this.props.authRequest(this.state.email, this.state.password);
   };
 
   render() {
@@ -52,6 +47,7 @@ class Login extends Component {
               placeholder="Seu email"
               value={this.state.email}
               onChange={e => this.setState({ email: e.target.value })}
+              required
             />
             <input
               type="password"
