@@ -9,6 +9,9 @@ export const Types = {
   AUTH_SUCCESS: 'login/AUTH_SUCCESS',
   AUTH_FAILED: 'login/AUTH_FAILED',
   AUTH_LOGOUT: 'login/AUTH_LOGOUT',
+  FORGOT_PASSWORD_REQUEST: 'login/FORGOT_PASSWORD_REQUEST',
+  FORGOT_PASSWORD_SUCCESS: 'login/FORGOT_PASSWORD_SUCCESS',
+  FORGOT_PASSWORD_FAIL: 'login/FORGOT_PASSWORD_FAIL',
 };
 
 /**
@@ -47,6 +50,23 @@ export default function login(state = INITIAL_STATE, action) {
         token: '',
         isAuthenticated: false,
       };
+    case Types.FORGOT_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case Types.FORGOT_PASSWORD_SUCCESS:
+      toast.success('Verifique a caixa de entrada do seu email');
+      return {
+        ...state,
+        loading: false,
+      };
+    case Types.FORGOT_PASSWORD_FAIL:
+      toast.warn('Esse email não existe');
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
@@ -71,5 +91,15 @@ export const Creators = {
   }),
   authLogout: () => ({
     type: Types.AUTH_LOGOUT,
+  }),
+  requestNewPassword: email => ({
+    type: Types.FORGOT_PASSWORD_REQUEST,
+    payload: { email },
+  }),
+  requestNewPasswordSuccess: () => ({
+    type: Types.FORGOT_PASSWORD_SUCCESS,
+  }),
+  requestNewPasswordFailed: () => ({
+    type: Types.FORGOT_PASSWORD_FAIL,
   }),
 };

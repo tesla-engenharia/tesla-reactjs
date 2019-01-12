@@ -1,10 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 
 import api from '~/services/api';
+import HostConfig from '~/config/Host';
 
 import { Creators as LoginActions } from '../ducks/login';
 
-export function* logar(action) {
+function* logar(action) {
   try {
     const response = yield call(api.post, '/sessions', {
       email: action.payload.email,
@@ -17,7 +18,6 @@ export function* logar(action) {
 
     yield put(LoginActions.authSuccess(token));
   } catch (err) {
-    console.tron.log(err);
     const { data } = err.response;
     if (data.error) {
       yield put(LoginActions.authFailed(err.response.data.error.message));
@@ -26,3 +26,18 @@ export function* logar(action) {
     }
   }
 }
+
+function* recuperar(action) {
+  try {
+    const response = yield call(api.post, '/passwords', {
+      email: action.payload.email,
+      redirect_url: HostConfig.Host + ':' + HostConfig.Port + '/reset',
+    });
+
+    yield put(LoginActions.requestNewPasswordSuccess());
+  } catch (err) {
+    yield put(LoginActions.requestNewPasswordFailed());
+  }
+}
+
+export { logar, recuperar };

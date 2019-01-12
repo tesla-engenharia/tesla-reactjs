@@ -29,8 +29,8 @@ export const LoginBox = styled.div`
 
   color: ${colors.black};
 
-  min-width: 270px;
-  min-height: 300px;
+  min-width: 300px;
+  min-height: 250px;
 
   background-color: ${colors.white};
   border-radius: ${metrics.baseRadius}px;

@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
 import SideDrawer from './components/SideDrawer';
+import ForgotPassword from './pages/ForgotPassword';
 
 class Routes extends Component {
   state = {};
@@ -77,6 +78,10 @@ class Routes extends Component {
                 <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
               ))
               }
+            />
+            <Route
+              path="/forgot"
+              component={ForgotPassword}
             />
             <Route
               path="*"
