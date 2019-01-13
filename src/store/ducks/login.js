@@ -12,6 +12,9 @@ export const Types = {
   FORGOT_PASSWORD_REQUEST: 'login/FORGOT_PASSWORD_REQUEST',
   FORGOT_PASSWORD_SUCCESS: 'login/FORGOT_PASSWORD_SUCCESS',
   FORGOT_PASSWORD_FAIL: 'login/FORGOT_PASSWORD_FAIL',
+  RESET_PASSWORD_REQUEST: 'login/RESET_PASSWORD_REQUEST',
+  RESET_PASSWORD_SUCCESS: 'login/RESET_PASSWORD_SUCCESS',
+  RESET_PASSWORD_FAIL: 'login/RESET_PASSWORD_FAIL',
 };
 
 /**
@@ -67,6 +70,23 @@ export default function login(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
       };
+    case Types.RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case Types.RESET_PASSWORD_SUCCESS:
+      toast.success('Senha alterada com sucesso');
+      return {
+        ...state,
+        loading: false,
+      };
+    case Types.RESET_PASSWORD_FAIL:
+      toast.warn('Algo deu errado');
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
@@ -101,5 +121,15 @@ export const Creators = {
   }),
   requestNewPasswordFailed: () => ({
     type: Types.FORGOT_PASSWORD_FAIL,
+  }),
+  resetPasswordRequest: (token, password) => ({
+    type: Types.RESET_PASSWORD_REQUEST,
+    payload: { token, password },
+  }),
+  resetPasswordSuccess: () => ({
+    type: Types.RESET_PASSWORD_SUCCESS,
+  }),
+  resetPasswordFailed: () => ({
+    type: Types.RESET_PASSWORD_FAIL,
   }),
 };

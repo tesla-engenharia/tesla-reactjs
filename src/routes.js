@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound';
 import Header from './components/Header';
 import SideDrawer from './components/SideDrawer';
 import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 class Routes extends Component {
   state = {};
@@ -82,6 +83,10 @@ class Routes extends Component {
             <Route
               path="/forgot"
               component={ForgotPassword}
+            />
+            <Route
+              path="/reset"
+              component={ResetPassword}
             />
             <Route
               path="*"

@@ -29,7 +29,7 @@ function* logar(action) {
 
 function* recuperar(action) {
   try {
-    const response = yield call(api.post, '/passwords', {
+    yield call(api.post, '/passwords', {
       email: action.payload.email,
       redirect_url: HostConfig.Host + ':' + HostConfig.Port + '/reset',
     });
@@ -40,4 +40,18 @@ function* recuperar(action) {
   }
 }
 
-export { logar, recuperar };
+function* alterar(action) {
+  try {
+    yield call(api.put, '/passwords', {
+      token: action.payload.token,
+      password: action.payload.password,
+      password_confirmation: action.payload.password,
+    });
+
+    yield put(LoginActions.resetPasswordSuccess());
+  } catch (err) {
+    yield put(LoginActions.resetPasswordFailed());
+  }
+}
+
+export { logar, recuperar, alterar };
