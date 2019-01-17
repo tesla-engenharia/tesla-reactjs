@@ -55,7 +55,6 @@ class Header extends Component {
   }
 
   handleOpenSideDrawer = () => {
-    console.tron.log('Abriu a SideDrawer');
     this.props.openSideDrawer(true);
   };
 

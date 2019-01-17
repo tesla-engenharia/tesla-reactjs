@@ -20,7 +20,7 @@ import UserCreate from './pages/UserCreate';
 
 import Header from './components/Header';
 import SideDrawer from './components/SideDrawer';
-
+import Footer from './components/Footer';
 
 class Routes extends Component {
   state = {};
@@ -34,7 +34,7 @@ class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div style={{ height: '100%' }}>
+        <div style={{ position: 'relative', minHeight: '100%' }}>
           <Switch>
             <Route
               exact
@@ -44,6 +44,7 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <Home />
+                  <Footer />
                 </Fragment>
               )}
             />
@@ -54,6 +55,7 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <Servicos />
+                  <Footer />
                 </Fragment>
               )}
             />
@@ -64,6 +66,7 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <Blog />
+                  <Footer />
                 </Fragment>
               )}
             />
@@ -71,7 +74,10 @@ class Routes extends Component {
               path="/login"
               render={props => (this.props.login.isAuthenticated ? (
                 <Redirect to={{ pathname: '/panel', state: { from: props.location } }} />
-              ) : <Login />)}
+              ) : (
+                <Login />
+              ))
+              }
             />
             <Route
               path="/panel"
@@ -82,18 +88,9 @@ class Routes extends Component {
               ))
               }
             />
-            <Route
-              path="/forgot"
-              component={ForgotPassword}
-            />
-            <Route
-              path="/reset"
-              component={ResetPassword}
-            />
-            <Route
-              path="/user/create"
-              component={UserCreate}
-            />
+            <Route path="/forgot" component={ForgotPassword} />
+            <Route path="/reset" component={ResetPassword} />
+            <Route path="/user/create" component={UserCreate} />
             <Route
               path="*"
               render={() => (

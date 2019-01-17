@@ -13,3 +13,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   height: 100%;
 }
+
+#root {
+  height: 100%;
+}
