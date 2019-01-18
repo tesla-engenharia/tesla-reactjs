@@ -25,6 +25,7 @@ const Footer = () => (
         <Column>
           <h4>{nome}</h4>
           <a href={`mailto:${email}`}>{email}</a>
+          <a href={`tel:${telefone}`}>{telefone}</a>
         </Column>
       </MediaQuery>
     </Content>

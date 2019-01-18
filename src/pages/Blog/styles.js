@@ -27,6 +27,7 @@ export const Post = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  background-color: ${colors.secundary};
 
   margin: ${metrics.baseMargin}px 0px;
   padding: ${metrics.basePadding}px;
@@ -100,6 +101,24 @@ export const Loading = styled.div`
     width: 5%;
     height: 5%;
 
+    color: ${colors.secundary};
+  }
+`;
+
+export const BotaoMais = styled.div`
+  display: flex;
+  flex: 1;
+
+  height: 40px;
+
+  margin-top: ${metrics.baseMargin * 3}px;
+
+  justify-content: center;
+
+  svg {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
     color: ${colors.secundary};
   }
 `;

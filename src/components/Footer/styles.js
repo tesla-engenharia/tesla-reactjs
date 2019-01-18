@@ -35,11 +35,11 @@ export const Column = styled.div`
 
   h4 {
     font-size: 13px;
+    padding-bottom: ${metrics.basePadding / 3}px;
   }
 
   h5 {
     font-weight: normal;
-    padding-top: ${metrics.basePadding / 3}px;
 
     font-size: 13px;
   }
