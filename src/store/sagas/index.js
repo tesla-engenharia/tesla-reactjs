@@ -6,7 +6,7 @@ import { Types as BlogTypes } from "../ducks/blog";
 import { logar, recuperar, alterar } from "./login";
 import { Types as LoginTypes } from "../ducks/login";
 
-import { create } from "./user";
+import { create as createUser } from "./user";
 import { Types as UserTypes } from "../ducks/user";
 
 export default function* rootSaga() {
@@ -16,6 +16,6 @@ export default function* rootSaga() {
     takeLatest(LoginTypes.AUTH_REQUEST, logar),
     takeLatest(LoginTypes.FORGOT_PASSWORD_REQUEST, recuperar),
     takeLatest(LoginTypes.RESET_PASSWORD_REQUEST, alterar),
-    takeLatest(UserTypes.CREATE_REQUEST, create)
+    takeLatest(UserTypes.CREATE_REQUEST, createUser)
   ]);
 }

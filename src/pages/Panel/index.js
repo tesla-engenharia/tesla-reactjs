@@ -6,11 +6,26 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as LoginActions } from "~/store/ducks/login";
 
-import { FaPlus, FaSignOutAlt, FaPen, FaTrash } from "react-icons/fa";
+import {
+  FaPlus,
+  FaSignOutAlt,
+  FaPen,
+  FaTrash,
+  FaFileUpload
+} from "react-icons/fa";
 
 import { Container, SideBar, Items, Item } from "./styles";
 
+import DeletarPost from "./DeletarPost";
+import UparImagem from "./UparImagem";
+import EditarPost from "./EditarPost";
+import CriarPost from "./CriarPost";
+
 class Panel extends Component {
+  state = {
+    page: "criar"
+  };
+
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
@@ -34,14 +49,29 @@ class Panel extends Component {
       <Container>
         <SideBar>
           <Items>
-            <Item href="#" texto="Criar um post">
+            <Item
+              texto="Criar um post"
+              onClick={() => this.setState({ page: "criar" })}
+            >
               <FaPlus />
             </Item>
-            <Item href="#" texto="Editar um post">
+            <Item
+              texto="Editar um post"
+              onClick={() => this.setState({ page: "editar" })}
+            >
               <FaPen />
             </Item>
-            <Item href="#" texto="Deletar um post">
+            <Item
+              texto="Deletar um post"
+              onClick={() => this.setState({ page: "deletar" })}
+            >
               <FaTrash />
+            </Item>
+            <Item
+              texto="Upar um arquivo"
+              onClick={() => this.setState({ page: "upar" })}
+            >
+              <FaFileUpload />
             </Item>
           </Items>
           <Items>
@@ -50,10 +80,26 @@ class Panel extends Component {
             </Item>
           </Items>
         </SideBar>
+        <Content page={this.state.page} />
       </Container>
     );
   }
 }
+
+const Content = ({ page }) => {
+  switch (page) {
+    case "criar":
+      return <CriarPost />;
+    case "editar":
+      return <EditarPost />;
+    case "deletar":
+      return <DeletarPost />;
+    case "upar":
+      return <UparImagem />;
+    default:
+      return <h1>{page}</h1>;
+  }
+};
 
 const mapStateToProps = state => ({
   login: state.login

@@ -51,6 +51,7 @@ export const Item = styled.a`
 
   &:before {
       content: '${props => props.texto || ""}';
+      display: none;
 
       white-space:nowrap;
 
@@ -66,14 +67,9 @@ export const Item = styled.a`
 
       position: absolute;
       z-index: -1;
-
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
     }
 
     &:hover:before{
-      opacity: 1;
-      transition-delay: 1s;
-      -webkit-transition-delay: 1s; /* Safari */
+      display: inherit;
     }
 `;

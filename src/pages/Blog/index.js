@@ -70,6 +70,8 @@ class Blog extends Component {
     const { loading, response } = this.props.blog;
     const { page, lastPage } = response;
 
+    console.tron.log(page, lastPage);
+
     const Lista = () => (
       <div>
         {response.data.map(post => (
@@ -96,15 +98,15 @@ class Blog extends Component {
         ) : (
           <div>
             <Lista />
-            {page === 1 ? (
+            {page === 1 && lastPage > 1 ? (
               <BotaoMais>
                 <FiArrowRight onClick={this.handleLoadMore} />
               </BotaoMais>
-            ) : page === lastPage ? (
+            ) : page === lastPage && lastPage !== 1 ? (
               <BotaoMais>
                 <FiArrowLeft onClick={this.handleLoadLess} />
               </BotaoMais>
-            ) : (
+            ) : lastPage === 1 ? null : (
               <BotaoMais>
                 <FiArrowLeft onClick={this.handleLoadLess} />
                 <FiArrowRight onClick={this.handleLoadMore} />

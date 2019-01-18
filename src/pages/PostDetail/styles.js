@@ -97,8 +97,29 @@ export const Content = styled.div`
     padding: ${metrics.basePadding}px 0px;
   }
 
-  ul {
+  ul,
+  ol {
     margin: 0 0 25px;
     padding-left: ${metrics.basePadding}px;
+  }
+
+  ol {
+    list-style: decimal inside;
+  }
+
+  img {
+    display: flex;
+    flex: 1;
+    margin: auto;
+    padding: ${metrics.basePadding}px 0px;
+  }
+
+  blockquote {
+    font-size: 21px;
+    font-style: italic;
+    margin: ${metrics.baseMargin}px 0px;
+    margin-left: -15px;
+    padding: 20px;
+    border-left: 5px solid ${colors.light};
   }
 `;
