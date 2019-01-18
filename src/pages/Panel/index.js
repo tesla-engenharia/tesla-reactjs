@@ -1,36 +1,32 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Creators as LoginActions } from '~/store/ducks/login';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as LoginActions } from "~/store/ducks/login";
 
-import {
-  FaPlus, FaSignOutAlt, FaPen, FaTrash,
-} from 'react-icons/fa';
+import { FaPlus, FaSignOutAlt, FaPen, FaTrash } from "react-icons/fa";
 
-import {
-  Container, SideBar, Items, Item,
-} from './styles';
+import { Container, SideBar, Items, Item } from "./styles";
 
 class Panel extends Component {
   static propTypes = {
     history: PropTypes.shape({
-      push: PropTypes.func.isRequired,
+      push: PropTypes.func.isRequired
     }),
-    authLogout: PropTypes.func.isRequired,
+    authLogout: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    history: {},
+    history: {}
   };
 
-  handleLogoutClick = (e) => {
+  handleLogoutClick = e => {
     e.preventDefault();
-    localStorage.removeItem('@Tesla:token');
+    localStorage.removeItem("@Tesla:token");
     this.props.authLogout();
-    this.props.history.push('/login');
+    this.props.history.push("/login");
   };
 
   render() {
@@ -60,12 +56,13 @@ class Panel extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
+  login: state.login
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(LoginActions, dispatch);
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(withRouter(Panel));

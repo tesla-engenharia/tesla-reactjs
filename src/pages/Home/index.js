@@ -1,11 +1,8 @@
-/* eslint-disable import/no-unresolved */
-import React from 'react';
+import React from "react";
 
-import {
-  Container, Box, Content, Image,
-} from './styles';
+import { Container, Box, Content, Image } from "./styles";
 
-import biblioteca from '~/assets/biblioteca.png';
+import biblioteca from "~/assets/biblioteca.png";
 
 const Home = () => (
   <Container>
@@ -13,11 +10,12 @@ const Home = () => (
       <Content>
         <h1>Engenharia Elétrica aplicada do jeito certo</h1>
         <p>
-          A Tesla Engenharia é a empresa júnior do curso de Engenharia Elétrica da Universidade
-          Federal do Tocantins.
+          A Tesla Engenharia é a empresa júnior do curso de Engenharia Elétrica
+          da Universidade Federal do Tocantins.
         </p>
         <p>
-          Não é familiar com o conceito de empresa júnior? <a href="/">Clique aqui</a>
+          Não é familiar com o conceito de empresa júnior?{" "}
+          <a href="/">Clique aqui</a>
         </p>
       </Content>
       <Content>

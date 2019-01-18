@@ -1,20 +1,34 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put } from "redux-saga/effects";
+import readingTime from "reading-time";
 
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
+import * as moment from "moment";
+import "moment/locale/pt-br";
 
-import api from '~/services/api';
+import api from "~/services/api";
 
-import { Creators as BlogActions } from '../ducks/blog';
+import { Creators as BlogActions } from "../ducks/blog";
+moment.locale("pt-BR");
 
-export function* indexPosts(action) {
+function* indexPosts(action) {
   const { data } = yield call(api.get, `/posts?page=${action.payload.page}`);
 
-  moment.locale('pt-BR');
-
-  data.data.map((post) => {
+  data.data.map(post => {
     return (post.fromNow = moment(post.created_at).fromNow());
   });
 
   yield put(BlogActions.indexSuccess(data));
 }
+
+function* showPost(action) {
+  const { data } = yield call(api.get, `/posts/${action.payload.id}`);
+
+  data.fromNow = moment(data.created_at).fromNow();
+
+  let { text } = readingTime(data.content);
+  text = text.replace("read", "de leitura");
+  data.readingTime = text;
+
+  yield put(BlogActions.showSuccess(data));
+}
+
+export { indexPosts, showPost };

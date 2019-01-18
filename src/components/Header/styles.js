@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { colors, metrics } from '~/styles';
+import { colors, metrics } from "~/styles";
 
 export const Bar = styled.div`
   height: 64px;
@@ -65,7 +65,7 @@ export const Navigation = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: ${props => (props.mobile ? '35px' : '43px')};
+  height: ${props => (props.mobile ? "35px" : "43px")};
 
   padding-right: ${metrics.baseMargin * 2}px;
   margin-right: ${metrics.baseMargin * 2}px;
@@ -88,7 +88,8 @@ export const Menu = styled.div`
     border-bottom-color: rgba(255, 255, 255, 0);
 
     transition: border-bottom-color 0.3s, padding-bottom 0.3s, color 0.3s;
-    -webkit-transition: border-bottom-color 0.3s, padding-bottom 0.3s, color 0.3s;
+    -webkit-transition: border-bottom-color 0.3s, padding-bottom 0.3s,
+      color 0.3s;
 
     transition-timing-function: ease-in-out;
 

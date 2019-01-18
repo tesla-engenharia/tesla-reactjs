@@ -1,20 +1,20 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put } from "redux-saga/effects";
 
-import api from '~/services/api';
-import HostConfig from '~/config/Host';
+import api from "~/services/api";
+import HostConfig from "~/config/Host";
 
-import { Creators as LoginActions } from '../ducks/login';
+import { Creators as LoginActions } from "../ducks/login";
 
 function* logar(action) {
   try {
-    const response = yield call(api.post, '/sessions', {
+    const response = yield call(api.post, "/sessions", {
       email: action.payload.email,
-      password: action.payload.password,
+      password: action.payload.password
     });
 
     const { token } = response.data;
 
-    localStorage.setItem('@Tesla:token', token);
+    localStorage.setItem("@Tesla:token", token);
 
     yield put(LoginActions.authSuccess(token));
   } catch (err) {
@@ -22,16 +22,16 @@ function* logar(action) {
     if (data.error) {
       yield put(LoginActions.authFailed(err.response.data.error.message));
     } else {
-      yield put(LoginActions.authFailed('Verifique suas credenciais'));
+      yield put(LoginActions.authFailed("Verifique suas credenciais"));
     }
   }
 }
 
 function* recuperar(action) {
   try {
-    yield call(api.post, '/passwords', {
+    yield call(api.post, "/passwords", {
       email: action.payload.email,
-      redirect_url: HostConfig.Host + ':' + HostConfig.Port + '/reset',
+      redirect_url: HostConfig.Host + ":" + HostConfig.Port + "/reset"
     });
 
     yield put(LoginActions.requestNewPasswordSuccess());
@@ -42,10 +42,10 @@ function* recuperar(action) {
 
 function* alterar(action) {
   try {
-    yield call(api.put, '/passwords', {
+    yield call(api.put, "/passwords", {
       token: action.payload.token,
       password: action.payload.password,
-      password_confirmation: action.payload.password,
+      password_confirmation: action.payload.password
     });
 
     yield put(LoginActions.resetPasswordSuccess());

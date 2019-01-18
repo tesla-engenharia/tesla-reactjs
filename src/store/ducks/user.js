@@ -1,13 +1,13 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 /**
  * TYPES
  */
 
 export const Types = {
-  CREATE_REQUEST: 'user/CREATE_REQUEST',
-  CREATE_SUCCESS: 'user/CREATE_SUCCESS',
-  CREATE_FAILED: 'user/CREATE_FAILED',
+  CREATE_REQUEST: "user/CREATE_REQUEST",
+  CREATE_SUCCESS: "user/CREATE_SUCCESS",
+  CREATE_FAILED: "user/CREATE_FAILED"
 };
 
 /**
@@ -15,7 +15,7 @@ export const Types = {
  */
 
 const INITIAL_STATE = {
-  loading: false,
+  loading: false
 };
 
 export default function login(state = INITIAL_STATE, action) {
@@ -23,19 +23,19 @@ export default function login(state = INITIAL_STATE, action) {
     case Types.CREATE_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case Types.CREATE_SUCCESS:
-      toast.success('Conta criada com sucesso');
+      toast.success("Conta criada com sucesso");
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case Types.CREATE_FAILED:
       toast.warn(action.payload.message);
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     default:
       return state;
@@ -49,13 +49,13 @@ export default function login(state = INITIAL_STATE, action) {
 export const Creators = {
   createRequest: (name, email, password) => ({
     type: Types.CREATE_REQUEST,
-    payload: { name, email, password },
+    payload: { name, email, password }
   }),
   createSuccess: () => ({
-    type: Types.CREATE_SUCCESS,
+    type: Types.CREATE_SUCCESS
   }),
   createFailed: message => ({
     type: Types.CREATE_FAILED,
-    payload: { message },
-  }),
+    payload: { message }
+  })
 };

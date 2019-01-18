@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { colors, metrics } from '~/styles';
+import { colors, metrics } from "~/styles";
 
 export const Drawer = styled.nav`
   height: 100%;
@@ -18,7 +18,7 @@ export const Drawer = styled.nav`
   justify-content: flex-start;
   padding-top: ${metrics.basePadding}px;
 
-  transform: ${props => (props.open ? 'translateX(0)' : 'translateX(-105%)')};
+  transform: ${props => (props.open ? "translateX(0)" : "translateX(-105%)")};
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
 
@@ -48,10 +48,11 @@ export const Backdrop = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background-color: ${props => (props.open ? colors.lessDarkTransparent : colors.transparent)};
+  background-color: ${props =>
+    props.open ? colors.lessDarkTransparent : colors.transparent};
   z-index: 100;
 
-  display: ${props => (props.open ? 'absolute' : 'none')};
+  display: ${props => (props.open ? "absolute" : "none")};
 
   transition: background-color 0.5s ease-in-out;
 `;

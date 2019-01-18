@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Creators as LoginActions } from '~/store/ducks/login';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as LoginActions } from "~/store/ducks/login";
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import Tau from '~/assets/tau.png';
+import Tau from "~/assets/tau.png";
 
-import { FaCircleNotch } from 'react-icons/fa';
-import '~/styles/loading.css';
+import { FaCircleNotch } from "react-icons/fa";
+import "~/styles/loading.css";
 
-import { Container, LoginBox } from './styles';
+import { Container, LoginBox } from "./styles";
 
 class ForgotPassword extends Component {
   state = {
-    email: '',
+    email: ""
   };
 
   static propTypes = {
     requestNewPassword: PropTypes.func.isRequired,
     login: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-    }).isRequired,
+      loading: PropTypes.bool.isRequired
+    }).isRequired
   };
 
-  handleSubmitForm = (e) => {
+  handleSubmitForm = e => {
     e.preventDefault();
     this.props.requestNewPassword(this.state.email);
   };
@@ -49,7 +49,9 @@ class ForgotPassword extends Component {
               onChange={e => this.setState({ email: e.target.value })}
               required
             />
-            <button type="submit">{loading ? <FaCircleNotch className="icon-spin" /> : 'Recuperar'}</button>
+            <button type="submit">
+              {loading ? <FaCircleNotch className="icon-spin" /> : "Recuperar"}
+            </button>
           </form>
           <Link to="/login">Voltar</Link>
         </LoginBox>
@@ -60,12 +62,13 @@ class ForgotPassword extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
+  login: state.login
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(LoginActions, dispatch);
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ForgotPassword);

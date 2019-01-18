@@ -1,20 +1,20 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 /**
  * TYPES
  */
 
 export const Types = {
-  AUTH_REQUEST: 'login/AUTH_REQUEST',
-  AUTH_SUCCESS: 'login/AUTH_SUCCESS',
-  AUTH_FAILED: 'login/AUTH_FAILED',
-  AUTH_LOGOUT: 'login/AUTH_LOGOUT',
-  FORGOT_PASSWORD_REQUEST: 'login/FORGOT_PASSWORD_REQUEST',
-  FORGOT_PASSWORD_SUCCESS: 'login/FORGOT_PASSWORD_SUCCESS',
-  FORGOT_PASSWORD_FAIL: 'login/FORGOT_PASSWORD_FAIL',
-  RESET_PASSWORD_REQUEST: 'login/RESET_PASSWORD_REQUEST',
-  RESET_PASSWORD_SUCCESS: 'login/RESET_PASSWORD_SUCCESS',
-  RESET_PASSWORD_FAIL: 'login/RESET_PASSWORD_FAIL',
+  AUTH_REQUEST: "login/AUTH_REQUEST",
+  AUTH_SUCCESS: "login/AUTH_SUCCESS",
+  AUTH_FAILED: "login/AUTH_FAILED",
+  AUTH_LOGOUT: "login/AUTH_LOGOUT",
+  FORGOT_PASSWORD_REQUEST: "login/FORGOT_PASSWORD_REQUEST",
+  FORGOT_PASSWORD_SUCCESS: "login/FORGOT_PASSWORD_SUCCESS",
+  FORGOT_PASSWORD_FAIL: "login/FORGOT_PASSWORD_FAIL",
+  RESET_PASSWORD_REQUEST: "login/RESET_PASSWORD_REQUEST",
+  RESET_PASSWORD_SUCCESS: "login/RESET_PASSWORD_SUCCESS",
+  RESET_PASSWORD_FAIL: "login/RESET_PASSWORD_FAIL"
 };
 
 /**
@@ -22,9 +22,9 @@ export const Types = {
  */
 
 const INITIAL_STATE = {
-  isAuthenticated: !!localStorage.getItem('@Tesla:token'),
+  isAuthenticated: !!localStorage.getItem("@Tesla:token"),
   loading: false,
-  token: '',
+  token: ""
 };
 
 export default function login(state = INITIAL_STATE, action) {
@@ -32,60 +32,60 @@ export default function login(state = INITIAL_STATE, action) {
     case Types.AUTH_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case Types.AUTH_SUCCESS:
       return {
         ...state,
         loading: false,
         token: action.payload.token,
-        isAuthenticated: true,
+        isAuthenticated: true
       };
     case Types.AUTH_FAILED:
       toast.warn(action.payload.message);
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case Types.AUTH_LOGOUT:
       return {
         ...state,
-        token: '',
-        isAuthenticated: false,
+        token: "",
+        isAuthenticated: false
       };
     case Types.FORGOT_PASSWORD_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case Types.FORGOT_PASSWORD_SUCCESS:
-      toast.success('Verifique a caixa de entrada do seu email');
+      toast.success("Verifique a caixa de entrada do seu email");
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case Types.FORGOT_PASSWORD_FAIL:
-      toast.warn('Esse email não existe');
+      toast.warn("Esse email não existe");
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case Types.RESET_PASSWORD_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case Types.RESET_PASSWORD_SUCCESS:
-      toast.success('Senha alterada com sucesso');
+      toast.success("Senha alterada com sucesso");
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case Types.RESET_PASSWORD_FAIL:
-      toast.warn('Algo deu errado');
+      toast.warn("Algo deu errado");
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     default:
       return state;
@@ -99,37 +99,37 @@ export default function login(state = INITIAL_STATE, action) {
 export const Creators = {
   authRequest: (email, password) => ({
     type: Types.AUTH_REQUEST,
-    payload: { email, password },
+    payload: { email, password }
   }),
   authSuccess: token => ({
     type: Types.AUTH_SUCCESS,
-    payload: { token },
+    payload: { token }
   }),
   authFailed: message => ({
     type: Types.AUTH_FAILED,
-    payload: { message },
+    payload: { message }
   }),
   authLogout: () => ({
-    type: Types.AUTH_LOGOUT,
+    type: Types.AUTH_LOGOUT
   }),
   requestNewPassword: email => ({
     type: Types.FORGOT_PASSWORD_REQUEST,
-    payload: { email },
+    payload: { email }
   }),
   requestNewPasswordSuccess: () => ({
-    type: Types.FORGOT_PASSWORD_SUCCESS,
+    type: Types.FORGOT_PASSWORD_SUCCESS
   }),
   requestNewPasswordFailed: () => ({
-    type: Types.FORGOT_PASSWORD_FAIL,
+    type: Types.FORGOT_PASSWORD_FAIL
   }),
   resetPasswordRequest: (token, password) => ({
     type: Types.RESET_PASSWORD_REQUEST,
-    payload: { token, password },
+    payload: { token, password }
   }),
   resetPasswordSuccess: () => ({
-    type: Types.RESET_PASSWORD_SUCCESS,
+    type: Types.RESET_PASSWORD_SUCCESS
   }),
   resetPasswordFailed: () => ({
-    type: Types.RESET_PASSWORD_FAIL,
-  }),
+    type: Types.RESET_PASSWORD_FAIL
+  })
 };

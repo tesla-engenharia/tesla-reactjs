@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { colors, metrics } from '~/styles';
+import { colors, metrics } from "~/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ export const Item = styled.a`
   }
 
   &:before {
-      content: '${props => props.texto || ''}';
+      content: '${props => props.texto || ""}';
 
       white-space:nowrap;
 

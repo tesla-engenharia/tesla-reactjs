@@ -1,16 +1,16 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put } from "redux-saga/effects";
 
-import api from '~/services/api';
+import api from "~/services/api";
 
-import { Creators as UserActions } from '../ducks/user';
+import { Creators as UserActions } from "../ducks/user";
 
 export function* create({ payload }) {
   try {
-    yield call(api.post, '/users', {
+    yield call(api.post, "/users", {
       name: payload.name,
       email: payload.email,
       password: payload.password,
-      password_confirmation: payload.password,
+      password_confirmation: payload.password
     });
 
     yield put(UserActions.createSuccess());

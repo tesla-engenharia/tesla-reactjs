@@ -1,56 +1,53 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
+import MediaQuery from "react-responsive";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Creators as MenuActions } from '~/store/ducks/menu';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as MenuActions } from "~/store/ducks/menu";
 
-import { SocialMedia as socialMedia } from '~/config/SocialMedia';
+import { SocialMedia as socialMedia } from "~/config/SocialMedia";
 
-import { FaBars } from 'react-icons/fa';
+import { FaBars } from "react-icons/fa";
 
-import Tau from '~/assets/tau.png';
+import Tau from "~/assets/tau.png";
 
-import { colors, metrics } from '~/styles';
-import {
-  Bar,
-  Toolbox,
-  Navigation,
-  Social,
-  Logo,
-  Menu,
-} from './styles';
+import { colors, metrics } from "~/styles";
+import { Bar, Toolbox, Navigation, Social, Logo, Menu } from "./styles";
 
 class Header extends Component {
   static propTypes = {
     location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired
     }).isRequired,
     updateActive: PropTypes.func.isRequired,
     openSideDrawer: PropTypes.func.isRequired,
     menu: PropTypes.shape({
-      pages: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        page: PropTypes.string.isRequired,
-      }).isRequired).isRequired,
+      pages: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          page: PropTypes.string.isRequired
+        }).isRequired
+      ).isRequired,
       pageActive: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        page: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
+        page: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
   };
 
   componentDidMount() {
     const { location } = this.props;
 
-    const active = this.props.menu.pages.find(menuItem => menuItem.page === location.pathname);
+    const active = this.props.menu.pages.find(
+      menuItem => menuItem.page === location.pathname
+    );
 
     if (active) {
       this.props.updateActive(active);
     } else {
-      this.props.updateActive({ name: '404', page: location.pathname });
+      this.props.updateActive({ name: "404", page: location.pathname });
     }
   }
 
@@ -58,17 +55,17 @@ class Header extends Component {
     this.props.openSideDrawer(true);
   };
 
-  handleClick = (menuItem) => {
+  handleClick = menuItem => {
     this.props.updateActive(menuItem);
-  }
+  };
 
   render() {
     const activeStyle = {
       color: colors.white,
-      borderBottomStyle: 'solid',
+      borderBottomStyle: "solid",
       borderBottomWidth: 2,
-      borderBottomColor: '#fff',
-      paddingBottom: 5,
+      borderBottomColor: "#fff",
+      paddingBottom: 5
     };
 
     return (
@@ -82,7 +79,11 @@ class Header extends Component {
                 {this.props.menu.pages.map((menuItem, actualIndex) => (
                   <Link
                     key={actualIndex}
-                    style={this.props.menu.pageActive.name === menuItem.name ? activeStyle : {}}
+                    style={
+                      this.props.menu.pageActive.name === menuItem.name
+                        ? activeStyle
+                        : {}
+                    }
                     onClick={() => this.handleClick(menuItem)}
                     to={menuItem.page}
                   >
@@ -94,7 +95,12 @@ class Header extends Component {
 
             <Social>
               {socialMedia.map((item, actualIndex) => (
-                <a key={actualIndex} href={item.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  key={actualIndex}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={item.icon} alt={item.alt} />
                 </a>
               ))}
@@ -112,7 +118,12 @@ class Header extends Component {
             <MediaQuery query="(min-width: 350px)">
               <Social>
                 {socialMedia.map((item, actualIndex) => (
-                  <a key={actualIndex} href={item.url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={actualIndex}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img src={item.icon} alt={item.alt} />
                   </a>
                 ))}
@@ -126,9 +137,15 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  menu: state.menu,
+  menu: state.menu
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(MenuActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(MenuActions, dispatch);
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+);

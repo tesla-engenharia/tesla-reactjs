@@ -1,14 +1,14 @@
-import React, { Fragment, Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Fragment, Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Creators as MenuActions } from '~/store/ducks/menu';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as MenuActions } from "~/store/ducks/menu";
 
-import { Drawer, Backdrop } from './styles';
+import { Drawer, Backdrop } from "./styles";
 
-import menuItems from '~/config/MenuItems';
+import menuItems from "~/config/MenuItems";
 
 class SideDrawer extends Component {
   state = {};
@@ -18,11 +18,11 @@ class SideDrawer extends Component {
       sideDrawer: PropTypes.bool.isRequired,
       pageActive: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        page: PropTypes.string.isRequired,
-      }).isRequired,
+        page: PropTypes.string.isRequired
+      }).isRequired
     }).isRequired,
     openSideDrawer: PropTypes.func.isRequired,
-    updateActive: PropTypes.func.isRequired,
+    updateActive: PropTypes.func.isRequired
   };
 
   handleClose = () => {
@@ -49,21 +49,25 @@ class SideDrawer extends Component {
           ))}
         </Drawer>
 
-        <Backdrop open={this.props.menu.sideDrawer} onClick={this.handleClose} />
+        <Backdrop
+          open={this.props.menu.sideDrawer}
+          onClick={this.handleClose}
+        />
       </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  menu: state.menu,
+  menu: state.menu
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(MenuActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(MenuActions, dispatch);
 
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
-  )(SideDrawer),
+    mapDispatchToProps
+  )(SideDrawer)
 );

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { colors, metrics } from '~/styles';
+import { colors, metrics } from "~/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -38,13 +38,13 @@ export const Post = styled.div`
   transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: translateY(-3%);
+    transform: translateY(-3px);
 
     cursor: pointer;
   }
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
 

@@ -1,40 +1,39 @@
-import React, { Fragment, Component } from 'react';
-import {
-  BrowserRouter, Switch, Route, Redirect,
-} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Fragment, Component } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Creators as LoginActions } from '~/store/ducks/login';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as LoginActions } from "~/store/ducks/login";
 
-import Home from './pages/Home';
-import Servicos from './pages/Servicos';
-import Blog from './pages/Blog';
-import Login from './pages/Login';
-import Panel from './pages/Panel';
-import NotFound from './pages/NotFound';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import UserCreate from './pages/UserCreate';
+import Home from "./pages/Home";
+import Servicos from "./pages/Servicos";
+import Blog from "./pages/Blog";
+import Login from "./pages/Login";
+import Panel from "./pages/Panel";
+import NotFound from "./pages/NotFound";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import UserCreate from "./pages/UserCreate";
+import PostDetail from "./pages/PostDetail";
 
-import Header from './components/Header';
-import SideDrawer from './components/SideDrawer';
-import Footer from './components/Footer';
+import Header from "./components/Header";
+import SideDrawer from "./components/SideDrawer";
+import Footer from "./components/Footer";
 
 class Routes extends Component {
   state = {};
 
   static propTypes = {
     login: PropTypes.shape({
-      isAuthenticated: PropTypes.bool.isRequired,
-    }).isRequired,
+      isAuthenticated: PropTypes.bool.isRequired
+    }).isRequired
   };
 
   render() {
     return (
       <BrowserRouter>
-        <div style={{ position: 'relative', minHeight: '100%' }}>
+        <div style={{ position: "relative", minHeight: "100%" }}>
           <Switch>
             <Route
               exact
@@ -72,25 +71,42 @@ class Routes extends Component {
             />
             <Route
               path="/login"
-              render={props => (this.props.login.isAuthenticated ? (
-                <Redirect to={{ pathname: '/panel', state: { from: props.location } }} />
-              ) : (
-                <Login />
-              ))
+              render={props =>
+                this.props.login.isAuthenticated ? (
+                  <Redirect
+                    to={{ pathname: "/panel", state: { from: props.location } }}
+                  />
+                ) : (
+                  <Login />
+                )
               }
             />
             <Route
               path="/panel"
-              render={props => (this.props.login.isAuthenticated ? (
-                <Panel />
-              ) : (
-                <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-              ))
+              render={props =>
+                this.props.login.isAuthenticated ? (
+                  <Panel />
+                ) : (
+                  <Redirect
+                    to={{ pathname: "/login", state: { from: props.location } }}
+                  />
+                )
               }
             />
             <Route path="/forgot" component={ForgotPassword} />
             <Route path="/reset" component={ResetPassword} />
             <Route path="/user/create" component={UserCreate} />
+            <Route
+              path="/post/:id"
+              render={props => (
+                <Fragment>
+                  <SideDrawer />
+                  <Header />
+                  <PostDetail {...props} />
+                  <Footer />
+                </Fragment>
+              )}
+            />
             <Route
               path="*"
               render={() => (
@@ -109,12 +125,13 @@ class Routes extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
+  login: state.login
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(LoginActions, dispatch);
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Routes);
