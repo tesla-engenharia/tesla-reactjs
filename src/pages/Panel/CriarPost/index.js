@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 import { Container } from "./styles";
+import { FaCircleNotch } from "react-icons/fa";
+import "~/styles/loading.css";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as BlogActions } from "~/store/ducks/blog";
 
 const instrucoes =
   "Para a correta estilização dos posts, você vai precisar saber o mínimo de HTML. \nTente utilizar, no conteúdo, componentes como:" +
@@ -13,17 +22,29 @@ const instrucoes =
   "\n<blockquote>CITAÇÃO</blockquote> para citações" +
   "\n<img src='LINK' alt='DESCRIÇÃO DA IMAGEM' /> para imagens durante o fluxo do post";
 
-export default class CriarPost extends Component {
+class CriarPost extends Component {
   state = {
     title: "",
     content: "",
     file_id: null
   };
 
+  handleSubmitPost = e => {
+    e.preventDefault();
+    const { title, content, file_id } = this.state;
+    this.props.createRequest({
+      title,
+      content,
+      file_id
+    });
+  };
+
   render() {
+    const { loading } = this.props.blog;
+
     return (
       <Container>
-        <form>
+        <form onSubmit={this.handleSubmitPost}>
           <input
             type="text"
             placeholder="Título"
@@ -44,10 +65,25 @@ export default class CriarPost extends Component {
             onChange={e => this.setState({ content: e.target.value })}
             required
           />
-          <button type="submit">Enviar</button>
+          <button type="submit">
+            {loading ? <FaCircleNotch className="icon-spin" /> : "Entrar"}
+          </button>
           <pre>{instrucoes}</pre>
         </form>
+        <ToastContainer autoClose={3000} />
       </Container>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  blog: state.blog
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(BlogActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CriarPost);

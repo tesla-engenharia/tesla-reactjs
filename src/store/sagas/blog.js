@@ -31,4 +31,19 @@ function* showPost(action) {
   yield put(BlogActions.showSuccess(data));
 }
 
-export { indexPosts, showPost };
+function* createPost(action) {
+  try {
+    yield call(api.post, "/posts", action.payload.post, {
+      headers: {
+        Authorization: "bearer " + localStorage.getItem("@Tesla:token")
+      }
+    });
+
+    yield put(BlogActions.createSuccess());
+  } catch (err) {
+    console.tron.log(err);
+    yield put(BlogActions.createFail(err.message));
+  }
+}
+
+export { indexPosts, showPost, createPost };
