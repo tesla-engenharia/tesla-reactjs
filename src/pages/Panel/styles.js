@@ -16,7 +16,6 @@ export const SideBar = styled.div`
   width: 43px;
 
   border-right: 1px solid ${colors.dark};
-  margin-right: ${metrics.baseMargin}px;
   padding: ${metrics.baseMargin}px;
 
   display: flex;

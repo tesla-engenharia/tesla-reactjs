@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { metrics, colors } from "~/styles";
 
 export const Container = styled.div`
-  margin: ${metrics.baseMargin * 2}px;
+  margin: ${metrics.baseMargin * 2}px auto;
 
   flex: 1;
+  max-width: ${metrics.contentWidth}px;
 
   color: ${colors.white};
 
