@@ -13,15 +13,5 @@ export const SocialMedia = [
     url: "https://www.instagram.com/teslaej/",
     alt: "Instagram da Tesla",
     icon: instagram
-  },
-  {
-    url: "/",
-    alt: "Twitter da Tesla",
-    icon: twitter
-  },
-  {
-    url: "/",
-    alt: "Canal do Youtube da Tesla",
-    icon: youtube
   }
 ];

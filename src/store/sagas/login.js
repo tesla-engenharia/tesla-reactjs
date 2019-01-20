@@ -31,7 +31,10 @@ function* recuperar(action) {
   try {
     yield call(api.post, "/passwords", {
       email: action.payload.email,
-      redirect_url: HostConfig.Host + ":" + HostConfig.Port + "/reset"
+      redirect_url:
+        process.env.NODE_ENV === "development"
+          ? HostConfig.Host + ":" + HostConfig.Port + "/reset"
+          : HostConfig.Host + "/reset"
     });
 
     yield put(LoginActions.requestNewPasswordSuccess());
