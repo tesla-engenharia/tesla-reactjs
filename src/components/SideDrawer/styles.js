@@ -19,8 +19,8 @@ export const Drawer = styled.nav`
   padding-top: ${metrics.basePadding}px;
 
   transform: ${props => (props.open ? "translateX(0)" : "translateX(-105%)")};
-  transition: transform 0.5s ease-out;
-  -webkit-transition: transform 0.5s ease-out;
+  transition: transform 0.3s ease-out;
+  -webkit-transition: transform 0.3s ease-out;
 
   a {
     text-decoration: none;

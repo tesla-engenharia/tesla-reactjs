@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 import MediaQuery from "react-responsive";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as MenuActions } from "~/store/ducks/menu";
@@ -91,8 +94,9 @@ class PostDetail extends Component {
             <FaCircleNotch className="icon-spin" />
           </Loading>
         ) : (
-          <Detalhes />
+          post && <Detalhes />
         )}
+        <ToastContainer autoClose={3000} />
       </Container>
     );
   }

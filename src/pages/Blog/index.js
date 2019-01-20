@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 
 import queryString from "query-string";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { FaCircleNotch } from "react-icons/fa";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import "~/styles/loading.css";
@@ -74,18 +77,19 @@ class Blog extends Component {
 
     const Lista = () => (
       <div>
-        {response.data.map(post => (
-          <Post
-            key={post.id}
-            background={post.file.url}
-            onClick={() => this.redirectToDetails(post.id)}
-          >
-            <Title>{post.title}</Title>
-            <Info>
-              por <span>{post.user.name}</span> {post.fromNow}
-            </Info>
-          </Post>
-        ))}
+        {response.data &&
+          response.data.map(post => (
+            <Post
+              key={post.id}
+              background={post.file.url}
+              onClick={() => this.redirectToDetails(post.id)}
+            >
+              <Title>{post.title}</Title>
+              <Info>
+                por <span>{post.user.name}</span> {post.fromNow}
+              </Info>
+            </Post>
+          ))}
       </div>
     );
 
@@ -114,6 +118,7 @@ class Blog extends Component {
             )}
           </div>
         )}
+        <ToastContainer autoClose={3000} />
       </Container>
     );
   }

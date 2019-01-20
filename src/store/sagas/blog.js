@@ -10,25 +10,33 @@ import { Creators as BlogActions } from "../ducks/blog";
 moment.locale("pt-BR");
 
 function* indexPosts(action) {
-  const { data } = yield call(api.get, `/posts?page=${action.payload.page}`);
+  try {
+    const { data } = yield call(api.get, `/posts?page=${action.payload.page}`);
 
-  data.data.map(post => {
-    return (post.fromNow = moment(post.created_at).fromNow());
-  });
+    data.data.map(post => {
+      return (post.fromNow = moment(post.created_at).fromNow());
+    });
 
-  yield put(BlogActions.indexSuccess(data));
+    yield put(BlogActions.indexSuccess(data));
+  } catch (err) {
+    yield put(BlogActions.indexFail(err.message));
+  }
 }
 
 function* showPost(action) {
-  const { data } = yield call(api.get, `/posts/${action.payload.id}`);
+  try {
+    const { data } = yield call(api.get, `/posts/${action.payload.id}`);
 
-  data.fromNow = moment(data.created_at).fromNow();
+    data.fromNow = moment(data.created_at).fromNow();
 
-  let { text } = readingTime(data.content);
-  text = text.replace("read", "de leitura");
-  data.readingTime = text;
+    let { text } = readingTime(data.content);
+    text = text.replace("read", "de leitura");
+    data.readingTime = text;
 
-  yield put(BlogActions.showSuccess(data));
+    yield put(BlogActions.showSuccess(data));
+  } catch (err) {
+    yield put(BlogActions.showFail(err.message));
+  }
 }
 
 function* createPost(action) {
@@ -41,7 +49,6 @@ function* createPost(action) {
 
     yield put(BlogActions.createSuccess());
   } catch (err) {
-    console.tron.log(err);
     yield put(BlogActions.createFail(err.message));
   }
 }

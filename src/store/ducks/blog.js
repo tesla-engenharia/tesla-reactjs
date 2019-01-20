@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 export const Types = {
   INDEX_REQUEST: "blog/INDEX_REQUEST",
   INDEX_SUCCESS: "blog/INDEX_SUCCESS",
+  INDEX_FAIL: "blog/INDEX_FAIL",
   SHOW_REQUEST: "blog/SHOW_REQUEST",
   SHOW_SUCCESS: "blog/SHOW_SUCCESS",
+  SHOW_FAIL: "blog/SHOW_FAIL",
   CREATE_REQUEST: "blog/CREATE_REQUEST",
   CREATE_SUCCESS: "blog/CREATE_SUCCESS",
   CREATE_FAIL: "blog/CREATE_FAIL"
@@ -65,6 +67,16 @@ export default function blog(state = INITIAL_STATE, action) {
         loading: false,
         response: action.payload.response
       };
+    case Types.INDEX_FAIL:
+      toast.warn(action.payload.message);
+      return {
+        ...state,
+        loading: false,
+        response: {
+          ...state.response,
+          data: null
+        }
+      };
     case Types.SHOW_REQUEST:
       return {
         ...state,
@@ -75,6 +87,13 @@ export default function blog(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         post: action.payload.post
+      };
+    case Types.SHOW_FAIL:
+      toast.warn(action.payload.message);
+      return {
+        ...state,
+        loading: false,
+        post: null
       };
     case Types.CREATE_REQUEST:
       return {
@@ -111,6 +130,10 @@ export const Creators = {
     type: Types.INDEX_SUCCESS,
     payload: { response }
   }),
+  indexFail: message => ({
+    type: Types.INDEX_FAIL,
+    payload: { message }
+  }),
   showRequest: id => ({
     type: Types.SHOW_REQUEST,
     payload: { id }
@@ -118,6 +141,10 @@ export const Creators = {
   showSuccess: post => ({
     type: Types.SHOW_SUCCESS,
     payload: { post }
+  }),
+  showFail: message => ({
+    type: Types.SHOW_FAIL,
+    payload: { message }
   }),
   createRequest: post => ({
     type: Types.CREATE_REQUEST,
