@@ -56,18 +56,6 @@ class Panel extends Component {
               <FaPlus />
             </Item>
             <Item
-              texto="Editar um post"
-              onClick={() => this.setState({ page: "editar" })}
-            >
-              <FaPen />
-            </Item>
-            <Item
-              texto="Deletar um post"
-              onClick={() => this.setState({ page: "deletar" })}
-            >
-              <FaTrash />
-            </Item>
-            <Item
               texto="Upar um arquivo"
               onClick={() => this.setState({ page: "upar" })}
             >
