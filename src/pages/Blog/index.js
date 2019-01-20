@@ -73,8 +73,6 @@ class Blog extends Component {
     const { loading, response } = this.props.blog;
     const { page, lastPage } = response;
 
-    console.tron.log(page, lastPage);
-
     const Lista = () => (
       <div>
         {response.data &&

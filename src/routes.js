@@ -6,24 +6,28 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as LoginActions } from "~/store/ducks/login";
 
-import Home from "./pages/Home";
-import Servicos from "./pages/Servicos";
-import Blog from "./pages/Blog";
-import Login from "./pages/Login";
-import Panel from "./pages/Panel";
-import NotFound from "./pages/NotFound";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
-import UserCreate from "./pages/UserCreate";
-import PostDetail from "./pages/PostDetail";
+import asyncComponent from "./components/AsyncComponent/index";
 
 import Header from "./components/Header";
 import SideDrawer from "./components/SideDrawer";
 import Footer from "./components/Footer";
 
-class Routes extends Component {
-  state = {};
+const AsyncHome = asyncComponent(() => import("./pages/Home"));
+const AsyncServicos = asyncComponent(() => import("./pages/Servicos"));
+const AsyncBlog = asyncComponent(() => import("./pages/Blog"));
+const AsyncLogin = asyncComponent(() => import("./pages/Login"));
+const AsyncPanel = asyncComponent(() => import("./pages/Panel"));
+const AsyncNotFound = asyncComponent(() => import("./pages/NotFound"));
+const AsyncForgotPassword = asyncComponent(() =>
+  import("./pages/ForgotPassword")
+);
+const AsyncResetPassword = asyncComponent(() =>
+  import("./pages/ResetPassword")
+);
+const AsyncUserCreate = asyncComponent(() => import("./pages/UserCreate"));
+const AsyncPostDetail = asyncComponent(() => import("./pages/PostDetail"));
 
+class Routes extends Component {
   static propTypes = {
     login: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired
@@ -42,7 +46,7 @@ class Routes extends Component {
                 <Fragment>
                   <SideDrawer />
                   <Header />
-                  <Home />
+                  <AsyncHome />
                   <Footer />
                 </Fragment>
               )}
@@ -53,7 +57,7 @@ class Routes extends Component {
                 <Fragment>
                   <SideDrawer />
                   <Header />
-                  <Servicos />
+                  <AsyncServicos />
                   <Footer />
                 </Fragment>
               )}
@@ -64,7 +68,7 @@ class Routes extends Component {
                 <Fragment>
                   <SideDrawer />
                   <Header />
-                  <Blog />
+                  <AsyncBlog />
                   <Footer />
                 </Fragment>
               )}
@@ -77,7 +81,7 @@ class Routes extends Component {
                     to={{ pathname: "/panel", state: { from: props.location } }}
                   />
                 ) : (
-                  <Login />
+                  <AsyncLogin />
                 )
               }
             />
@@ -85,7 +89,7 @@ class Routes extends Component {
               path="/panel"
               render={props =>
                 this.props.login.isAuthenticated ? (
-                  <Panel />
+                  <AsyncPanel />
                 ) : (
                   <Redirect
                     to={{ pathname: "/login", state: { from: props.location } }}
@@ -93,16 +97,16 @@ class Routes extends Component {
                 )
               }
             />
-            <Route path="/forgot" component={ForgotPassword} />
-            <Route path="/reset" component={ResetPassword} />
-            <Route path="/user/create" component={UserCreate} />
+            <Route path="/forgot" component={AsyncForgotPassword} />
+            <Route path="/reset" component={AsyncResetPassword} />
+            <Route path="/user/create" component={AsyncUserCreate} />
             <Route
               path="/post/:id"
               render={props => (
                 <Fragment>
                   <SideDrawer />
                   <Header />
-                  <PostDetail {...props} />
+                  <AsyncPostDetail {...props} />
                   <Footer />
                 </Fragment>
               )}
@@ -113,7 +117,7 @@ class Routes extends Component {
                 <Fragment>
                   <SideDrawer />
                   <Header />
-                  <NotFound />
+                  <AsyncNotFound />
                 </Fragment>
               )}
             />

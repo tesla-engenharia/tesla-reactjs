@@ -16,7 +16,6 @@ export function* create({ payload }) {
     yield put(UserActions.createSuccess());
   } catch (err) {
     const { data } = err.response;
-    console.tron.log(data);
     for (let index = 0; index < data.length; index++) {
       const element = data[index];
       yield put(UserActions.createFailed(element.message));
