@@ -1,6 +1,6 @@
 .icon-spin {
-  -webkit-animation: icon-spin 2s infinite linear;
-  animation: icon-spin 2s infinite linear;
+  -webkit-animation: icon-spin 0.8s infinite linear;
+  animation: icon-spin 0.8s infinite linear;
 }
 
 @-webkit-keyframes icon-spin {
