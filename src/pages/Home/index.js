@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-import { Container, Box, Content, BackgroundColor } from "./styles";
+import { Container, Box, Content, BackgroundColor, Background } from "./styles";
 
 import MediaQuery from "react-responsive";
 
@@ -10,7 +10,7 @@ import biblioteca from "~/assets/biblioteca.png";
 import papeis from "~/assets/papeis.png";
 
 const Home = () => (
-  <Fragment>
+  <Background>
     <BackgroundColor color={colors.white}>
       <Container>
         <Box>
@@ -59,7 +59,7 @@ const Home = () => (
         </Box>
       </Container>
     </BackgroundColor>
-  </Fragment>
+  </Background>
 );
 
 export default Home;

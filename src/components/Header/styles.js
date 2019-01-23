@@ -6,7 +6,6 @@ export const Bar = styled.div`
   height: 64px;
 
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
 

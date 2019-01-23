@@ -104,7 +104,7 @@ export const Content = styled.div`
   h5,
   h6,
   blockquote {
-    padding-bottom: ${metrics.basePadding}px;
+    margin-bottom: ${metrics.basePadding}px;
   }
 
   ul,
@@ -127,7 +127,6 @@ export const Content = styled.div`
   blockquote {
     font-size: 21px;
     font-style: italic;
-    margin: ${metrics.baseMargin}px 0px;
     margin-left: -15px;
     padding: 20px;
     border-left: 5px solid ${colors.light};

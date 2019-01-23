@@ -37,7 +37,15 @@ class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div style={{ position: "relative", minHeight: "100%" }}>
+        <div
+          style={{
+            position: "relative",
+            minHeight: "100%",
+            display: "flex",
+            flexDirection: "column",
+            flexGrow: 1
+          }}
+        >
           <Switch>
             <Route
               exact

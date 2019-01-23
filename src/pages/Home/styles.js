@@ -71,3 +71,9 @@ export const BackgroundColor = styled.div`
 
   padding-bottom: ${({ ultimo }) => ultimo && "100px"};
 `;
+
+export const Background = styled.div`
+  background-color: ${colors.secundary};
+  height: 100%;
+  flex: 1;
+`;

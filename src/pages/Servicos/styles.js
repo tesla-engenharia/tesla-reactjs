@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   color: ${colors.secundary};
 
   h1 {
@@ -14,8 +14,6 @@ export const Container = styled.div`
 
     text-align: center;
   }
-
-  justify-content: center;
 
   max-width: 800px;
   margin: 0 auto;

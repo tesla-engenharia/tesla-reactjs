@@ -1,4 +1,9 @@
+const Host =
+  process.env.NODE_ENV !== "development"
+    ? "http://empresajuniortesla.com"
+    : "http://localhost";
+
 module.exports = {
-  Host: "http://empresajuniortesla.com",
+  Host,
   Port: 3000
 };
