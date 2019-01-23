@@ -1,3 +1,3 @@
 module.exports = {
-  baseURL: "http://68.183.129.44"
+  baseURL: "http://api.empresajuniortesla.com"
 };
