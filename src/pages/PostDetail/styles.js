@@ -5,7 +5,7 @@ import { colors, metrics } from "~/styles";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  justify-content: flex-start;
   padding: ${metrics.basePadding}px 0px;
   padding-bottom: ${metrics.basePadding + 100}px;
 
