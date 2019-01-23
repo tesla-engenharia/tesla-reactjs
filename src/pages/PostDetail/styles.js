@@ -93,8 +93,18 @@ export const Content = styled.div`
   line-height: 2;
   font-size: 19px;
 
-  p {
-    padding: ${metrics.basePadding}px 0px;
+  p,
+  ul,
+  ol,
+  img,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote {
+    padding-bottom: ${metrics.basePadding}px;
   }
 
   ul,

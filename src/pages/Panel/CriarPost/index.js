@@ -66,7 +66,7 @@ class CriarPost extends Component {
             required
           />
           <button type="submit">
-            {loading ? <FaCircleNotch className="icon-spin" /> : "Entrar"}
+            {loading ? <FaCircleNotch className="icon-spin" /> : "Publicar"}
           </button>
           <pre>{instrucoes}</pre>
         </form>

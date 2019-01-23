@@ -49,7 +49,7 @@ export const Container = styled.div`
       background: ${colors.success};
       cursor: pointer;
 
-      width: 100px;
+      width: 200px;
 
       &:hover {
         opacity: 0.8;
