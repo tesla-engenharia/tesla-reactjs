@@ -8,6 +8,7 @@ import { Creators as LoginActions } from "~/store/ducks/login";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 import { FaCircleNotch } from "react-icons/fa";
 import "~/styles/loading.css";
@@ -52,7 +53,7 @@ class ForgotPassword extends Component {
           </form>
           <Link to="/login">Voltar</Link>
         </LoginBox>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

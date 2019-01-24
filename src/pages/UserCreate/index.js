@@ -8,6 +8,7 @@ import { Creators as UserActions } from "~/store/ducks/user";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 import { FaCircleNotch } from "react-icons/fa";
 import "~/styles/loading.css";
@@ -86,7 +87,7 @@ class UserCreate extends Component {
           </form>
           <Link to="/login">Ir para a página de login</Link>
         </LoginBox>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

@@ -5,6 +5,7 @@ import MediaQuery from "react-responsive";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -96,7 +97,7 @@ class PostDetail extends Component {
         ) : (
           post && <Detalhes />
         )}
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

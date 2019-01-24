@@ -6,6 +6,7 @@ import "~/styles/loading.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -70,7 +71,7 @@ class CriarPost extends Component {
           </button>
           <pre>{instrucoes}</pre>
         </form>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

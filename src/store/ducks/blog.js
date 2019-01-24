@@ -89,7 +89,7 @@ export default function blog(state = INITIAL_STATE, action) {
         post: action.payload.post
       };
     case Types.SHOW_FAIL:
-      toast.warn(action.payload.message);
+      toast.warn("Post inexistente");
       return {
         ...state,
         loading: false,
