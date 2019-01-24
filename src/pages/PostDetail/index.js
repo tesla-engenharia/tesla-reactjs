@@ -17,7 +17,7 @@ import { Creators as BlogActions } from "~/store/ducks/blog";
 
 import { FiClock } from "react-icons/fi";
 
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import "~/styles/loading.css";
 
 import { Container, Loading, Content } from "./styles";
@@ -95,7 +95,7 @@ class PostDetail extends Component {
       <Container>
         {loading ? (
           <Loading>
-            <FaCircleNotch className="icon-spin" />
+            <MdRefresh className="icon-spin" />
           </Loading>
         ) : (
           post && <Detalhes />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import "~/styles/loading.css";
 
 import { Loading } from "./styles";
@@ -23,7 +23,7 @@ export default function asyncComponent(importComponent) {
         <C {...this.props} />
       ) : (
         <Loading>
-          <FaCircleNotch className="icon-spin" />
+          <MdRefresh className="icon-spin" />
         </Loading>
       );
     }

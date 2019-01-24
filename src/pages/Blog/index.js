@@ -11,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import "~/styles/loading.css";
 
@@ -99,7 +99,7 @@ class Blog extends Component {
       <Container>
         {loading ? (
           <Loading>
-            <FaCircleNotch className="icon-spin" />
+            <MdRefresh className="icon-spin" />
           </Loading>
         ) : (
           <div>
