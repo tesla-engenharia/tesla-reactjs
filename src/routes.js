@@ -1,16 +1,13 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as LoginActions } from "~/store/ducks/login";
 
 import asyncComponent from "./components/AsyncComponent/index";
-
-import Header from "./components/Header";
-import SideDrawer from "./components/SideDrawer";
-import Footer from "./components/Footer";
 
 const AsyncHome = asyncComponent(() => import("./pages/Home"));
 const AsyncServicos = asyncComponent(() => import("./pages/Servicos"));
@@ -37,52 +34,11 @@ class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div
-          style={{
-            position: "relative",
-            minHeight: "100%",
-            display: "flex",
-            flexDirection: "column",
-            flexGrow: 1
-          }}
-        >
+        <FullscrenWrapper>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Fragment>
-                  <SideDrawer />
-                  <Header />
-                  <AsyncHome />
-                  <Footer />
-                </Fragment>
-              )}
-            />
-            <Route
-              exact
-              path="/servicos"
-              render={() => (
-                <Fragment>
-                  <SideDrawer />
-                  <Header />
-                  <AsyncServicos />
-                  <Footer />
-                </Fragment>
-              )}
-            />
-            <Route
-              exact
-              path="/blog"
-              render={() => (
-                <Fragment>
-                  <SideDrawer />
-                  <Header />
-                  <AsyncBlog />
-                  <Footer />
-                </Fragment>
-              )}
-            />
+            <Route exact path="/" component={AsyncHome} />
+            <Route exact path="/servicos" component={AsyncServicos} />
+            <Route exact path="/blog" component={AsyncBlog} />
             <Route
               exact
               path="/login"
@@ -112,31 +68,10 @@ class Routes extends Component {
             <Route exact path="/forgot" component={AsyncForgotPassword} />
             <Route exact path="/reset" component={AsyncResetPassword} />
             <Route exact path="/user/create" component={AsyncUserCreate} />
-            <Route
-              exact
-              path="/post/:id"
-              render={props => (
-                <Fragment>
-                  <SideDrawer />
-                  <Header />
-                  <AsyncPostDetail {...props} />
-                  <Footer />
-                </Fragment>
-              )}
-            />
-            <Route
-              path="*"
-              render={() => (
-                <Fragment>
-                  <SideDrawer />
-                  <Header />
-                  <AsyncNotFound />
-                  <Footer />
-                </Fragment>
-              )}
-            />
+            <Route exact path="/post/:id" component={AsyncPostDetail} />
+            <Route path="*" component={AsyncNotFound} />
           </Switch>
-        </div>
+        </FullscrenWrapper>
       </BrowserRouter>
     );
   }
@@ -153,3 +88,11 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Routes);
+
+const FullscrenWrapper = styled.div`
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;

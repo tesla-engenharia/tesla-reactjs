@@ -4,17 +4,17 @@ import youtube from "~/assets/social_youtube.png";
 
 export const SocialMedia = [
   {
-    url: "https://www.facebook.com/TeslaEJ/",
+    url: process.env.REACT_APP_FACEBOOK_URL,
     alt: "Facebook da Tesla",
     icon: facebook
   },
   {
-    url: "https://www.instagram.com/teslaej/",
+    url: process.env.REACT_APP_INSTAGRAM_URL,
     alt: "Instagram da Tesla",
     icon: instagram
   },
   {
-    url: "https://www.youtube.com/user/renanmav97",
+    url: process.env.REACT_APP_YOUTUBE_URL,
     alt: "Canal no YouTube da Tesla",
     icon: youtube
   }

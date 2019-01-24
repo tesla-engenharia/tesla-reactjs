@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
+
 import queryString from "query-string";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import "~/styles/loading.css";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { Creators as BlogActions } from "~/store/ducks/blog";
 
 import { Container, Post, Title, Info, Loading, BotaoMais } from "./styles";
@@ -96,7 +99,7 @@ class Blog extends Component {
       <Container>
         {loading ? (
           <Loading>
-            <FaCircleNotch className="icon-spin" />
+            <MdRefresh className="icon-spin" />
           </Loading>
         ) : (
           <div>
@@ -131,7 +134,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(BlogActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Blog));
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withFooter,
+  withHeader
+)(Blog);

@@ -1,8 +1,3 @@
-const baseURL =
-  process.env.NODE_ENV !== "development"
-    ? "http://api.empresajuniortesla.com"
-    : "http://localhost:3333";
-
 module.exports = {
-  baseURL
+  baseURL: process.env.REACT_APP_API_URL
 };

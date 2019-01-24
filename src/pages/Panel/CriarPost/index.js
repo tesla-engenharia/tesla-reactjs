@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Container } from "./styles";
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import "~/styles/loading.css";
 
 import { ToastContainer } from "react-toastify";
@@ -67,7 +67,7 @@ class CriarPost extends Component {
             required
           />
           <button type="submit">
-            {loading ? <FaCircleNotch className="icon-spin" /> : "Publicar"}
+            {loading ? <MdRefresh className="icon-spin" /> : "Publicar"}
           </button>
           <pre>{instrucoes}</pre>
         </form>

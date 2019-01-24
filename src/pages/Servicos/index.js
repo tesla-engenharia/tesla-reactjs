@@ -1,4 +1,6 @@
 import React from "react";
+import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import { Container, TitleWrapper, ContentWrapper, Content } from "./styles";
 
@@ -9,7 +11,7 @@ import lightBulb from "~/assets/lightBulb.png";
 import notepad from "~/assets/notepad.png";
 
 const Servicos = () => (
-  <Container style={{ paddingBottom: 150 }}>
+  <Container>
     <h1>Serviços qualificados para a sua necessidade.</h1>
     <TitleWrapper>
       <span>Projetos</span>
@@ -59,4 +61,4 @@ const Servicos = () => (
   </Container>
 );
 
-export default Servicos;
+export default withHeader(withFooter(Servicos));

@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 
-import { FaCircleNotch } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import "~/styles/loading.css";
 
 import { Container, LoginBox } from "./styles";
@@ -48,7 +48,7 @@ class ForgotPassword extends Component {
               required
             />
             <button type="submit">
-              {loading ? <FaCircleNotch className="icon-spin" /> : "Recuperar"}
+              {loading ? <MdRefresh className="icon-spin" /> : "Recuperar"}
             </button>
           </form>
           <Link to="/login">Voltar</Link>

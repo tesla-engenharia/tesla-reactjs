@@ -59,3 +59,7 @@ export const Column = styled.div`
     align-items: flex-start;
   }
 `;
+
+export const BottomSpacer = styled.div`
+  padding-bottom: 100px !important;
+`;

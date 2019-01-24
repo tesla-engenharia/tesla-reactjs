@@ -1,9 +1,4 @@
-const Host =
-  process.env.NODE_ENV !== "development"
-    ? "http://empresajuniortesla.com"
-    : "http://localhost";
-
 module.exports = {
-  Host,
-  Port: 3000
+  Host: process.env.REACT_APP_HOST,
+  Port: process.env.REACT_APP_PORT
 };
