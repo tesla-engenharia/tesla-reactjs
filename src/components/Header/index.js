@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import MediaQuery from "react-responsive";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { Creators as MenuActions } from "~/store/ducks/menu";
 
 import { SocialMedia as socialMedia } from "~/config/SocialMedia";
@@ -143,9 +143,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(MenuActions, dispatch);
 
-export default withRouter(
+export default compose(
+  withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Header)
-);
+  )
+)(Header);

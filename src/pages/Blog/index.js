@@ -13,7 +13,7 @@ import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import "~/styles/loading.css";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { Creators as BlogActions } from "~/store/ducks/blog";
 
 import { Container, Post, Title, Info, Loading, BotaoMais } from "./styles";
@@ -131,7 +131,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(BlogActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Blog));
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Blog);

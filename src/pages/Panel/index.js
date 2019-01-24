@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { Creators as LoginActions } from "~/store/ducks/login";
 
 import { FaPlus, FaSignOutAlt, FaFileUpload } from "react-icons/fa";
@@ -90,7 +90,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(LoginActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Panel));
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Panel);
