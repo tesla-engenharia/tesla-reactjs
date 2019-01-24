@@ -9,8 +9,6 @@ import { Creators as UserActions } from "~/store/ducks/user";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Tau from "~/assets/tau.png";
-
 import { FaCircleNotch } from "react-icons/fa";
 import "~/styles/loading.css";
 
@@ -49,7 +47,6 @@ class UserCreate extends Component {
 
     return (
       <Container>
-        <img src={Tau} alt="Logotipo da Tesla" />
         <LoginBox>
           <h1>Criação de conta</h1>
           <form onSubmit={this.handleSubmitForm}>

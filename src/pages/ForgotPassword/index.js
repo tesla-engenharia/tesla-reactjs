@@ -9,8 +9,6 @@ import { Creators as LoginActions } from "~/store/ducks/login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Tau from "~/assets/tau.png";
-
 import { FaCircleNotch } from "react-icons/fa";
 import "~/styles/loading.css";
 
@@ -38,7 +36,6 @@ class ForgotPassword extends Component {
 
     return (
       <Container>
-        <img src={Tau} alt="Logotipo da Tesla" />
         <LoginBox>
           <h1>Esqueci a senha</h1>
           <form onSubmit={this.handleSubmitForm}>
