@@ -68,8 +68,6 @@ export const Content = styled.div`
 export const BackgroundColor = styled.div`
   background-color: ${props => props.color};
   flex-grow: 1;
-
-  padding-bottom: ${({ ultimo }) => ultimo && "100px"};
 `;
 
 export const Background = styled.div`

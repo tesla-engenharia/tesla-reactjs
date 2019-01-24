@@ -1,4 +1,5 @@
 import React from "react";
+import { withFooter } from "~/components/Footer";
 
 import { Container } from "./styles";
 
@@ -11,4 +12,4 @@ const NotFound = () => (
   </Container>
 );
 
-export default NotFound;
+export default withFooter(NotFound);

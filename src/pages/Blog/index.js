@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { withFooter } from "~/components/Footer";
+
 import queryString from "query-string";
 
 import { ToastContainer } from "react-toastify";
@@ -136,5 +138,6 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
+  ),
+  withFooter
 )(Blog);

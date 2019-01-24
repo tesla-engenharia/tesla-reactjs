@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
+import { withFooter } from "~/components/Footer";
+
 import MediaQuery from "react-responsive";
 
 import { ToastContainer } from "react-toastify";
@@ -8,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { Creators as MenuActions } from "~/store/ducks/menu";
 import { Creators as BlogActions } from "~/store/ducks/blog";
 
@@ -110,7 +112,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ ...MenuActions, ...BlogActions }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withFooter
 )(PostDetail);

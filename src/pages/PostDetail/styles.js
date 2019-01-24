@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding: ${metrics.basePadding}px 0px;
-  padding-bottom: ${metrics.basePadding + 100}px;
+  padding-bottom: ${metrics.basePadding}px;
 
   max-width: ${metrics.contentWidth}px;
 

@@ -72,6 +72,8 @@ export const Content = styled.div`
   position: relative;
   z-index: 1;
 
+  transition: transform 0.3s ease-out;
+
   p {
     color: ${colors.dark};
     font-size: 24px;

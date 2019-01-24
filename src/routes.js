@@ -10,7 +10,6 @@ import asyncComponent from "./components/AsyncComponent/index";
 
 import Header from "./components/Header";
 import SideDrawer from "./components/SideDrawer";
-import Footer from "./components/Footer";
 
 const AsyncHome = asyncComponent(() => import("./pages/Home"));
 const AsyncServicos = asyncComponent(() => import("./pages/Servicos"));
@@ -55,7 +54,6 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncHome />
-                  <Footer />
                 </Fragment>
               )}
             />
@@ -67,7 +65,6 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncServicos />
-                  <Footer />
                 </Fragment>
               )}
             />
@@ -79,7 +76,6 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncBlog />
-                  <Footer />
                 </Fragment>
               )}
             />
@@ -120,7 +116,6 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncPostDetail {...props} />
-                  <Footer />
                 </Fragment>
               )}
             />
@@ -131,7 +126,6 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncNotFound />
-                  <Footer />
                 </Fragment>
               )}
             />
