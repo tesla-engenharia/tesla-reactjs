@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   color: ${colors.secundary};
 
   h1 {
@@ -54,6 +55,8 @@ export const ContentWrapper = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
 
+  max-width: 550px;
+
   position: relative;
 `;
 
@@ -61,8 +64,8 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  margin: ${metrics.baseMargin * 2}px ${metrics.baseMargin * 4}px;
+  max-width: 300px;
+  margin: ${metrics.baseMargin * 2}px;
   padding-bottom: ${metrics.basePadding * 2}px;
   text-align: center;
 
@@ -82,8 +85,9 @@ export const Content = styled.div`
   }
 
   span {
-    font-size: 16px;
+    font-size: 1.04rem;
     max-width: 200px;
+    padding: 0px ${metrics.basePadding}px;
   }
 
   &:after {
@@ -97,5 +101,9 @@ export const Content = styled.div`
     z-index: -1;
     opacity: 0.4;
     border-radius: ${metrics.baseRadius}px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
   }
 `;

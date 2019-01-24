@@ -60,6 +60,7 @@ class Routes extends Component {
               )}
             />
             <Route
+              exact
               path="/servicos"
               render={() => (
                 <Fragment>
@@ -71,6 +72,7 @@ class Routes extends Component {
               )}
             />
             <Route
+              exact
               path="/blog"
               render={() => (
                 <Fragment>
@@ -82,6 +84,7 @@ class Routes extends Component {
               )}
             />
             <Route
+              exact
               path="/login"
               render={props =>
                 this.props.login.isAuthenticated ? (
@@ -94,6 +97,7 @@ class Routes extends Component {
               }
             />
             <Route
+              exact
               path="/panel"
               render={props =>
                 this.props.login.isAuthenticated ? (
@@ -105,10 +109,11 @@ class Routes extends Component {
                 )
               }
             />
-            <Route path="/forgot" component={AsyncForgotPassword} />
-            <Route path="/reset" component={AsyncResetPassword} />
-            <Route path="/user/create" component={AsyncUserCreate} />
+            <Route exact path="/forgot" component={AsyncForgotPassword} />
+            <Route exact path="/reset" component={AsyncResetPassword} />
+            <Route exact path="/user/create" component={AsyncUserCreate} />
             <Route
+              exact
               path="/post/:id"
               render={props => (
                 <Fragment>
@@ -126,6 +131,7 @@ class Routes extends Component {
                   <SideDrawer />
                   <Header />
                   <AsyncNotFound />
+                  <Footer />
                 </Fragment>
               )}
             />

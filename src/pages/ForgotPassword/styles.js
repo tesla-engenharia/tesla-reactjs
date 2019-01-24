@@ -6,7 +6,13 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  background-color: ${colors.secundary};
+  background-image: linear-gradient(
+    to bottom right,
+    ${colors.secundary} 20%,
+    ${colors.primary} 120%
+  );
+
+  color: ${colors.darker};
 
   width: 100vw;
   height: 100vh;
@@ -27,8 +33,6 @@ export const LoginBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: ${colors.black};
-
   min-width: 300px;
   min-height: 250px;
 
@@ -37,6 +41,7 @@ export const LoginBox = styled.div`
 
   h1 {
     margin-bottom: ${metrics.baseMargin * 3}px;
+    font-size: 24px;
   }
 
   form {

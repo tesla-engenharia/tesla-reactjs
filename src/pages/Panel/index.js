@@ -6,13 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as LoginActions } from "~/store/ducks/login";
 
-import {
-  FaPlus,
-  FaSignOutAlt,
-  FaPen,
-  FaTrash,
-  FaFileUpload
-} from "react-icons/fa";
+import { FaPlus, FaSignOutAlt, FaFileUpload } from "react-icons/fa";
 
 import { Container, SideBar, Items, Item } from "./styles";
 

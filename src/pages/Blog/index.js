@@ -6,6 +6,7 @@ import queryString from "query-string";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 import { FaCircleNotch } from "react-icons/fa";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
@@ -117,7 +118,7 @@ class Blog extends Component {
               ))}
           </div>
         )}
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

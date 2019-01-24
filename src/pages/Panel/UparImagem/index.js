@@ -8,6 +8,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
 
 export default class UparImagem extends Component {
   state = {
@@ -57,7 +58,7 @@ export default class UparImagem extends Component {
             </a>
           </p>
         )}
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }

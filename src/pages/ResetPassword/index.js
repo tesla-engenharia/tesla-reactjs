@@ -10,8 +10,7 @@ import { Creators as LoginActions } from "~/store/ducks/login";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import Tau from "~/assets/tau.png";
+import "~/styles/toast.css";
 
 import { FaCircleNotch } from "react-icons/fa";
 import "~/styles/loading.css";
@@ -53,7 +52,6 @@ class ResetPassword extends Component {
 
     return (
       <Container>
-        <img src={Tau} alt="Logotipo da Tesla" />
         <LoginBox>
           <h1>Resetar a senha</h1>
           <form onSubmit={this.handleSubmitForm}>
@@ -79,7 +77,7 @@ class ResetPassword extends Component {
           </form>
           <Link to="/login">Ir para a página de login</Link>
         </LoginBox>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
       </Container>
     );
   }
