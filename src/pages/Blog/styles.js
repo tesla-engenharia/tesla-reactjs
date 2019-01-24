@@ -34,7 +34,7 @@ export const Post = styled.div`
 
   min-height: 200px;
 
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-out;
 
   &:hover {
     transform: translateY(-3px);
