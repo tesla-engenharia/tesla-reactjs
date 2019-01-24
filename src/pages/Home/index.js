@@ -1,5 +1,6 @@
 import React from "react";
 import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import { Container, Box, Content, BackgroundColor, Background } from "./styles";
 
@@ -63,4 +64,4 @@ const Home = () => (
   </Background>
 );
 
-export default withFooter(Home);
+export default withHeader(withFooter(Home));

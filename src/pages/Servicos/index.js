@@ -1,5 +1,6 @@
 import React from "react";
 import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import { Container, TitleWrapper, ContentWrapper, Content } from "./styles";
 
@@ -60,4 +61,4 @@ const Servicos = () => (
   </Container>
 );
 
-export default withFooter(Servicos);
+export default withHeader(withFooter(Servicos));

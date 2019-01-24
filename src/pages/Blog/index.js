@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import queryString from "query-string";
 
@@ -139,5 +140,6 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withFooter
+  withFooter,
+  withHeader
 )(Blog);

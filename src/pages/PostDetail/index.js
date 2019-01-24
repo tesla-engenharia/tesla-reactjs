@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import MediaQuery from "react-responsive";
 
@@ -117,5 +118,6 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withFooter
+  withFooter,
+  withHeader
 )(PostDetail);

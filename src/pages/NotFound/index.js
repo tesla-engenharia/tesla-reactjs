@@ -1,5 +1,6 @@
 import React from "react";
 import { withFooter } from "~/components/Footer";
+import { withHeader } from "~/components/Header";
 
 import { Container } from "./styles";
 
@@ -12,4 +13,4 @@ const NotFound = () => (
   </Container>
 );
 
-export default withFooter(NotFound);
+export default withHeader(withFooter(NotFound));
