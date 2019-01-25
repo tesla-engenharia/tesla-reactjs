@@ -6,9 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${metrics.basePadding}px;
-  padding-bottom: ${metrics.basePadding + 100}px;
+  padding-bottom: ${metrics.basePadding}px;
 
   max-width: ${metrics.contentWidth}px;
+  flex: 1;
 
   margin: 0 auto;
 `;
