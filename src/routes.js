@@ -94,5 +94,4 @@ const FullscrenWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 `;

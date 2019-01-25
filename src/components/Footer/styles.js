@@ -62,4 +62,7 @@ export const Column = styled.div`
 
 export const BottomSpacer = styled.div`
   padding-bottom: 100px !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 `;

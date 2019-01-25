@@ -72,6 +72,5 @@ export const BackgroundColor = styled.div`
 
 export const Background = styled.div`
   background-color: ${colors.secundary};
-  height: 100%;
   flex: 1;
 `;

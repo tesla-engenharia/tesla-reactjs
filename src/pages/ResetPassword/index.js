@@ -57,14 +57,14 @@ class ResetPassword extends Component {
           <form onSubmit={this.handleSubmitForm}>
             <input
               type="password"
-              placeholder="Digite seu nova senha"
+              placeholder="Digite sua nova senha"
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
               required
             />
             <input
               type="password"
-              placeholder="Confirme seu nova senha"
+              placeholder="Confirme sua nova senha"
               value={this.state.password_confirmation}
               onChange={e =>
                 this.setState({ password_confirmation: e.target.value })

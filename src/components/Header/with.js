@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import Header from "./header";
 import SideDrawer from "./SideDrawer";
 
 export const withHeader = Component => props => (
-  <div>
+  <Fragment>
     <SideDrawer />
     <Header />
     <Component {...props} />
-  </div>
+  </Fragment>
 );
