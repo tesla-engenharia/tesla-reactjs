@@ -103,8 +103,15 @@ export const Content = styled.div`
   h4,
   h5,
   h6,
-  blockquote {
+  blockquote,
+  iframe {
     margin-bottom: ${metrics.basePadding}px;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${colors.primary};
+    font-weight: bold;
   }
 
   ul,
@@ -115,6 +122,10 @@ export const Content = styled.div`
 
   ol {
     list-style: decimal inside;
+  }
+
+  iframe {
+    width: 100%;
   }
 
   img {
