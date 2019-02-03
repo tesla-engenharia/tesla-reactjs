@@ -55,8 +55,6 @@ export const ContentWrapper = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
 
-  max-width: 550px;
-
   position: relative;
 `;
 
@@ -88,8 +86,9 @@ export const Content = styled.div`
 
   span {
     font-size: 1.04rem;
-    max-width: 200px;
+    width: 100%;
     padding: 0px ${metrics.basePadding}px;
+    flex: 1;
   }
 
   &:after {

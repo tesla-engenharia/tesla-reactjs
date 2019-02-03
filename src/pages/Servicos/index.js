@@ -4,11 +4,11 @@ import { withHeader } from "~/components/Header";
 
 import { Container, TitleWrapper, ContentWrapper, Content } from "./styles";
 
-import eletricTower from "~/assets/eletricTower.png";
-import plug from "~/assets/plug.png";
+import smartHouse from "~/assets/smartHouse.png";
+import transformer from "~/assets/transformer.png";
 import solarEnergy from "~/assets/solarEnergy.png";
+import soundCard from "~/assets/soundCard.png";
 import lightBulb from "~/assets/lightBulb.png";
-import notepad from "~/assets/notepad.png";
 
 const Servicos = () => (
   <Container>
@@ -18,43 +18,42 @@ const Servicos = () => (
     </TitleWrapper>
     <ContentWrapper>
       <Content>
-        <p>Média e alta tensão</p>
-        <img src={eletricTower} alt="Média tensão" />
+        <p>SPDA</p>
+        <img src={smartHouse} alt="SPDA" />
         <span>
-          Projetos de subestações, postos de transformação, rede de distribuição
-          particular
+          Elaboração de projeto dos sistemas de proteção contra descarga
+          elétrica
         </span>
       </Content>
       <Content>
-        <p>Baixa tensão</p>
-        <img src={plug} alt="Baixa tensão" />
-        <span>Projetos elétricos residenciais e comerciais</span>
+        <p>Cabeamento estrutural</p>
+        <img src={transformer} alt="Cabeamento estrutural" />
+        <span>
+          Importante para a valorização de qualquer imóvel e para um bom
+          desempenho da infraestrutura de TI
+        </span>
       </Content>
       <Content>
         <p>Energia solar</p>
         <img src={solarEnergy} alt="Energia solar" />
         <span>
-          Projetos devidamente dimensionados de sistemas on-grid e off-grid
+          Projeto para utilização de energia solar para redução dos gastos de
+          energia
         </span>
       </Content>
       <Content>
-        <p>Eficiência energética</p>
-        <img src={lightBulb} alt="Eficiência energética" />
+        <p>RDU e RDR</p>
+        <img src={lightBulb} alt="Desenvolvimento de software" />
         <span>
-          Otimização dos sistemas consumidores de energia em busca da
-          sustentabilidade e redução de custos
+          Elaboração para projeto de rede de distribuição urbana e rural
         </span>
       </Content>
-    </ContentWrapper>
-    <TitleWrapper>
-      <span>Consultoria</span>
-    </TitleWrapper>
-    <ContentWrapper>
       <Content>
-        <p>Laudos técnicos</p>
-        <img src={notepad} alt="Média tensão" />
+        <p>Desenvolvimento de software</p>
+        <img src={soundCard} alt="Desenvolvimento de software" />
         <span>
-          Aterramento, Sistema de Proteção contra Descargas Atmosféricas
+          Busca conceitos relevantes para a organização e padronização da
+          qualidade no desenvolvimento de aplicações
         </span>
       </Content>
     </ContentWrapper>
