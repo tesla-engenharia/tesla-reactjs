@@ -19,7 +19,15 @@ import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
 import { Creators as BlogActions } from "~/store/ducks/blog";
 
-import { Container, Post, Title, Info, Loading, BotaoMais } from "./styles";
+import {
+  Container,
+  Post,
+  Title,
+  Info,
+  Loading,
+  BotaoMais,
+  Wrapper
+} from "./styles";
 
 class Blog extends Component {
   static propTypes = {
@@ -96,33 +104,35 @@ class Blog extends Component {
     );
 
     return (
-      <Container>
-        {loading ? (
-          <Loading>
-            <MdRefresh className="icon-spin" />
-          </Loading>
-        ) : (
-          <div>
-            <Lista />
-            {data.length > 0 &&
-              (page === 1 && lastPage > 1 ? (
-                <BotaoMais>
-                  <FiArrowRight onClick={this.handleLoadMore} />
-                </BotaoMais>
-              ) : page === lastPage && lastPage !== 1 ? (
-                <BotaoMais>
-                  <FiArrowLeft onClick={this.handleLoadLess} />
-                </BotaoMais>
-              ) : lastPage === 1 ? null : (
-                <BotaoMais>
-                  <FiArrowLeft onClick={this.handleLoadLess} />
-                  <FiArrowRight onClick={this.handleLoadMore} />
-                </BotaoMais>
-              ))}
-          </div>
-        )}
-        <ToastContainer autoClose={3000} toastClassName="round-toast" />
-      </Container>
+      <Wrapper>
+        <Container>
+          {loading ? (
+            <Loading>
+              <MdRefresh className="icon-spin" />
+            </Loading>
+          ) : (
+            <div>
+              <Lista />
+              {data.length > 0 &&
+                (page === 1 && lastPage > 1 ? (
+                  <BotaoMais>
+                    <FiArrowRight onClick={this.handleLoadMore} />
+                  </BotaoMais>
+                ) : page === lastPage && lastPage !== 1 ? (
+                  <BotaoMais>
+                    <FiArrowLeft onClick={this.handleLoadLess} />
+                  </BotaoMais>
+                ) : lastPage === 1 ? null : (
+                  <BotaoMais>
+                    <FiArrowLeft onClick={this.handleLoadLess} />
+                    <FiArrowRight onClick={this.handleLoadMore} />
+                  </BotaoMais>
+                ))}
+            </div>
+          )}
+          <ToastContainer autoClose={3000} toastClassName="round-toast" />
+        </Container>
+      </Wrapper>
     );
   }
 }

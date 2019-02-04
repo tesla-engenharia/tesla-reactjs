@@ -2,23 +2,25 @@ import styled from "styled-components";
 
 import { colors, metrics } from "~/styles";
 
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${metrics.basePadding}px;
   padding-bottom: ${metrics.basePadding}px;
 
-  max-width: ${metrics.contentWidth}px;
-  flex: 1;
-
-  margin: 0 auto;
+  max-width: 800px !important;
 `;
 
 export const Post = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1;
 
   position: relative;
   z-index: 0;
