@@ -9,12 +9,14 @@ import { Creators as LoginActions } from "~/store/ducks/login";
 
 import asyncComponent from "./components/AsyncComponent/index";
 
-const AsyncHome = asyncComponent(() => import("./pages/Home"));
-const AsyncServicos = asyncComponent(() => import("./pages/Servicos"));
-const AsyncBlog = asyncComponent(() => import("./pages/Blog"));
+import Home from "./pages/Home";
+import Servicos from "./pages/Servicos";
+import Blog from "./pages/Blog";
+import PostDetail from "./pages/PostDetail";
+import NotFound from "./pages/NotFound";
+
 const AsyncLogin = asyncComponent(() => import("./pages/Login"));
 const AsyncPanel = asyncComponent(() => import("./pages/Panel"));
-const AsyncNotFound = asyncComponent(() => import("./pages/NotFound"));
 const AsyncForgotPassword = asyncComponent(() =>
   import("./pages/ForgotPassword")
 );
@@ -22,7 +24,6 @@ const AsyncResetPassword = asyncComponent(() =>
   import("./pages/ResetPassword")
 );
 const AsyncUserCreate = asyncComponent(() => import("./pages/UserCreate"));
-const AsyncPostDetail = asyncComponent(() => import("./pages/PostDetail"));
 
 class Routes extends Component {
   static propTypes = {
@@ -36,9 +37,9 @@ class Routes extends Component {
       <BrowserRouter>
         <FullscrenWrapper>
           <Switch>
-            <Route exact path="/" component={AsyncHome} />
-            <Route exact path="/servicos" component={AsyncServicos} />
-            <Route exact path="/blog" component={AsyncBlog} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/servicos" component={Servicos} />
+            <Route exact path="/blog" component={Blog} />
             <Route
               exact
               path="/login"
@@ -68,8 +69,8 @@ class Routes extends Component {
             <Route exact path="/forgot" component={AsyncForgotPassword} />
             <Route exact path="/reset" component={AsyncResetPassword} />
             <Route exact path="/user/create" component={AsyncUserCreate} />
-            <Route exact path="/post/:id" component={AsyncPostDetail} />
-            <Route path="*" component={AsyncNotFound} />
+            <Route exact path="/post/:id" component={PostDetail} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </FullscrenWrapper>
       </BrowserRouter>

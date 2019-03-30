@@ -14,7 +14,7 @@ export const Container = styled.div`
   padding: ${metrics.basePadding}px;
   padding-bottom: ${metrics.basePadding}px;
 
-  max-width: 800px !important;
+  width: 800px !important;
 `;
 
 export const Post = styled.div`
