@@ -6,7 +6,7 @@ import { Container, Content, Column } from "./styles";
 const nome = "Tesla Engenharia - Serviços e Consultoria";
 const endereco = "UFT - Campus Palmas, Bloco B, Sala 9";
 const email = "empresajuniortesla@gmail.com";
-const telefone = "+55 63 99220-8502";
+const telefone = "+55 63 99205-7905";
 
 const Footer = () => (
   <Container>

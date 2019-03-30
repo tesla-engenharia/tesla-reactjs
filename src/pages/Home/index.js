@@ -5,11 +5,20 @@ import { withHeader } from "~/components/Header";
 import { Container, Box, Content, BackgroundColor, Background } from "./styles";
 
 import MediaQuery from "react-responsive";
+import { Slide } from "react-slideshow-image";
 
 import { colors } from "~/styles";
 
 import biblioteca from "~/assets/biblioteca.png";
 import papeis from "~/assets/papeis.png";
+
+const slideProperties = {
+  duration: 5000,
+  transitionDuration: 500,
+  infinite: true,
+  indicators: true,
+  arrows: true
+};
 
 const Home = () => (
   <Background>
@@ -60,6 +69,50 @@ const Home = () => (
           </Content>
         </Box>
       </Container>
+      <Slide
+        {...slideProperties}
+        style={{ margin: "60px auto", maxWidth: 800, padding: "0 20px" }}
+      >
+        <div
+          className="each-slide"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%"
+          }}
+        >
+          <div style={{ maxWidth: "70%", textAlign: "center", color: "white" }}>
+            <strong>Missão</strong>
+            <div>
+              Oferecer serviços em Engenharia Elétrica que garantam segurança e
+              qualidade técnica, disponíveis a um valor acessível para as
+              diferentes classes sociais que formam a sociedade.
+            </div>
+          </div>
+        </div>
+        <div
+          className="each-slide"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%"
+          }}
+        >
+          <div style={{ maxWidth: "70%", textAlign: "center", color: "white" }}>
+            <strong>Visão</strong>
+            <div>
+              Tornar-se uma empresa referência na atuação e qualificação
+              profissional de estudantes de Engenharia Elétrica, capacitando-os
+              para ter habilidades em administração, noções de mercado, gestão
+              de pessoas, trabalho em equipe, conhecimentos técnicos em
+              Engenharia, relacionamento interpessoal e excelência em execução
+              de serviços.
+            </div>
+          </div>
+        </div>
+      </Slide>
     </BackgroundColor>
   </Background>
 );

@@ -22,11 +22,11 @@ const Servicos = () => (
         <img src={smartHouse} alt="SPDA" />
         <span>
           Elaboração de projeto dos sistemas de proteção contra descarga
-          elétrica
+          atmosférica
         </span>
       </Content>
       <Content>
-        <p>Cabeamento estrutural</p>
+        <p>Cabeamento estruturado</p>
         <img src={transformer} alt="Cabeamento estrutural" />
         <span>
           Importante para a valorização de qualquer imóvel e para um bom

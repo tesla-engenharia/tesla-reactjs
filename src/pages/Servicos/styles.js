@@ -67,6 +67,8 @@ export const Content = styled.div`
   padding-bottom: ${metrics.basePadding * 2}px;
   text-align: center;
 
+  cursor: pointer;
+
   position: relative;
   z-index: 1;
 
