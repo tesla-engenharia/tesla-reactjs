@@ -9,8 +9,10 @@ import { Creators as LoginActions } from "~/store/ducks/login";
 
 import asyncComponent from "./components/AsyncComponent/index";
 
-const AsyncHome = asyncComponent(() => import("./pages/Home"));
-const AsyncServicos = asyncComponent(() => import("./pages/Servicos"));
+import Home from "./pages/Home";
+import Servicos from "./pages/Servicos";
+import ServiceDetail from "./pages/ServiceDetail";
+
 const AsyncBlog = asyncComponent(() => import("./pages/Blog"));
 const AsyncLogin = asyncComponent(() => import("./pages/Login"));
 const AsyncPanel = asyncComponent(() => import("./pages/Panel"));
@@ -36,8 +38,9 @@ class Routes extends Component {
       <BrowserRouter>
         <FullscrenWrapper>
           <Switch>
-            <Route exact path="/" component={AsyncHome} />
-            <Route exact path="/servicos" component={AsyncServicos} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/servicos" component={Servicos} />
+            <Route exact path="/servicos/:id" component={ServiceDetail} />
             <Route exact path="/blog" component={AsyncBlog} />
             <Route
               exact
