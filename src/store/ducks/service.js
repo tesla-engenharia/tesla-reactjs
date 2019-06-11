@@ -15,10 +15,17 @@ export const Types = {
 const INITIAL_STATE = {
   loading: false,
   response: {},
-  service: {}
+  service: {
+    id: 0,
+    icon_id: 0,
+    title: "",
+    description: "",
+    long_description: "",
+    department: ""
+  }
 };
 
-export default function blog(state = INITIAL_STATE, action) {
+export default function servicos(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SHOW_REQUEST:
       return {
