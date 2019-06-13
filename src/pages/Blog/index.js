@@ -34,7 +34,7 @@ class Blog extends Component {
     indexRequest: PropTypes.func.isRequired,
     blog: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
-      response: PropTypes.shape({
+      responses: PropTypes.shape({
         page: PropTypes.number,
         data: PropTypes.arrayOf(
           PropTypes.shape({
@@ -84,7 +84,7 @@ class Blog extends Component {
   render() {
     const { loading, response } = this.props.blog;
     const { page, lastPage, data } = response;
-
+    console.tron.log(this.props.blog);
     const Lista = () => (
       <div>
         {response.data &&

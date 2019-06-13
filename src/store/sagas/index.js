@@ -9,12 +9,13 @@ import { Types as LoginTypes } from "../ducks/login";
 import { create as createUser } from "./user";
 import { Types as UserTypes } from "../ducks/user";
 
-import { showService } from "./service";
+import { indexService, showService } from "./service";
 import { Types as ServiceTypes } from "../ducks/service";
 
 export default function* rootSaga() {
   yield all([
     takeLatest(ServiceTypes.SHOW_REQUEST, showService),
+    takeLatest(ServiceTypes.INDEX_REQUEST, indexService),
     takeLatest(BlogTypes.INDEX_REQUEST, indexPosts),
     takeLatest(BlogTypes.SHOW_REQUEST, showPost),
     takeLatest(BlogTypes.CREATE_REQUEST, createPost),

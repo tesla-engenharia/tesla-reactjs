@@ -1,63 +1,105 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+
 import { withFooter } from "~/components/Footer";
 import { withHeader } from "~/components/Header";
 
-import { Container, TitleWrapper, ContentWrapper, Content } from "./styles";
+import { Creators as ServiceActions } from "~/store/ducks/service";
+import { MdRefresh } from "react-icons/md";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "~/styles/toast.css";
+import {
+  Container,
+  Loading,
+  TitleWrapper,
+  ContentWrapper,
+  Content
+} from "./styles";
 
-import smartHouse from "~/assets/smartHouse.png";
-import transformer from "~/assets/transformer.png";
-import solarEnergy from "~/assets/solarEnergy.png";
-import soundCard from "~/assets/soundCard.png";
-import lightBulb from "~/assets/lightBulb.png";
+import { connect } from "react-redux";
+import { bindActionCreators, compose } from "redux";
 
-const Servicos = () => (
-  <Container>
-    <h1>Serviços qualificados para a sua necessidade.</h1>
-    <TitleWrapper>
-      <span>Projetos</span>
-    </TitleWrapper>
-    <ContentWrapper>
-      <Content>
-        <p>SPDA</p>
-        <img src={smartHouse} alt="SPDA" />
-        <span>
-          Elaboração de projeto dos sistemas de proteção contra descarga
-          elétrica
-        </span>
-      </Content>
-      <Content>
-        <p>Cabeamento estrutural</p>
-        <img src={transformer} alt="Cabeamento estrutural" />
-        <span>
-          Importante para a valorização de qualquer imóvel e para um bom
-          desempenho da infraestrutura de TI
-        </span>
-      </Content>
-      <Content>
-        <p>Energia solar</p>
-        <img src={solarEnergy} alt="Energia solar" />
-        <span>
-          Projeto para utilização de energia solar para redução dos gastos de
-          energia
-        </span>
-      </Content>
-      <Content>
-        <p>RDU e RDR</p>
-        <img src={lightBulb} alt="Desenvolvimento de software" />
-        <span>
-          Elaboração para projeto de rede de distribuição urbana e rural
-        </span>
-      </Content>
-      <Content>
-        <p>Desenvolvimento de software</p>
-        <img src={soundCard} alt="Desenvolvimento de software" />
-        <span>
-          Busca conceitos relevantes para a organização e padronização da
-          qualidade no desenvolvimento de aplicações
-        </span>
-      </Content>
-    </ContentWrapper>
-  </Container>
-);
+import { Link } from "react-router-dom";
 
-export default withHeader(withFooter(Servicos));
+class Servicos extends Component {
+  static propTypes = {
+    indexRequest: PropTypes.func.isRequired,
+    //response: PropTypes.shape({
+    loading: PropTypes.bool,
+    servicos: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        icon_id: PropTypes.number,
+        description: PropTypes.string,
+        departament: PropTypes.string
+      })
+    )
+    //})
+  };
+
+  componentDidMount() {
+    const { indexRequest } = this.props;
+    indexRequest();
+  }
+
+  render() {
+    const { loading, servicos } = this.props;
+    console.tron.log(servicos.response);
+    const lista = Array.from(servicos.response);
+    const Servico = () => (
+      <Container>
+        <h1>Serviços qualificados para a sua necessidade.</h1>
+        <TitleWrapper>
+          <span>Projetos</span>
+        </TitleWrapper>
+        <ContentWrapper>
+          {lista.map(servico => (
+            <Link to={"/servicos/" + servico.id}>
+              <Content>
+                <p>{servico.title}</p>
+                <img
+                  src={
+                    process.env.REACT_APP_API_URL + "/files/" + servico.icon_id
+                  }
+                  alt={servico.title}
+                />
+                <span>{servico.description}</span>
+              </Content>
+            </Link>
+          ))}
+        </ContentWrapper>
+      </Container>
+    );
+
+    return (
+      <Container>
+        {loading ? (
+          <Loading>
+            <MdRefresh className="icon-spin" />
+          </Loading>
+        ) : (
+          servicos && <Servico />
+        )}
+        <ToastContainer autoClose={3000} toastClassName="round-toast" />
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  servicos: state.service
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ ...ServiceActions }, dispatch);
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withFooter,
+  withHeader
+)(Servicos);

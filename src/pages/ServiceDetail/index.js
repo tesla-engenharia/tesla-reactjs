@@ -58,10 +58,7 @@ class ServiceDetail extends Component {
   }
 
   render() {
-    console.log("working");
-    console.log(this.props);
     const { loading, service } = this.props.servicos;
-
     const Detalhes = () => (
       <Fragment>
         <MediaQuery query="(max-width: 600px)">
@@ -75,16 +72,19 @@ class ServiceDetail extends Component {
             por <span>{service.departament}</span>
           </p>
         </div>
-        <img src="http://0.0.0.0:3333/files/1" alt="Imagem do post" />
+        <img
+          src={process.env.REACT_APP_API_URL + "/files/" + service.icon_id}
+          alt="Imagem do post"
+        />
         <Content>{service.long_description}</Content>
         <h3>Alguns de nossos trabalhos</h3>
         <div className="portfolio">
           {service.jobs &&
             service.jobs.map(job => (
               <Fragment>
-                <span>{job.title}</span>
+                <span>{job.icon}</span>
                 <img
-                  src="http://0.0.0.0:3333/files/1"
+                  src={process.env.REACT_APP_API_URL + "/files/" + job.file_id}
                   alt="Imagem do serviço"
                 />
               </Fragment>
