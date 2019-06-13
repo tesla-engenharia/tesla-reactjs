@@ -6,12 +6,19 @@
     "jest": true
   },
   "plugins": ["react", "jsx-a11y", "import"],
+  "settings": {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
+    }
+  },
   "rules": {
     "no-unused-expressions": 0,
     "no-nested-ternary": 0,
     "react/no-array-index-key": 0,
     "react/forbid-prop-types": 0,
-    "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
     "react/jsx-boolean-value": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
