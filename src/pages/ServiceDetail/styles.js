@@ -2,6 +2,13 @@ import styled from "styled-components";
 
 import { colors, metrics } from "~/styles";
 
+export const DetailWrapper = styled.div``;
+
+export const Job = styled.div`
+  display: flex;
+  flex-shrink: 1;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,52 +22,25 @@ export const Container = styled.div`
 
   color: ${colors.secundary};
 
-  h1.grande {
-    font-size: 54px;
-    font-weight: bold;
-    padding: ${metrics.basePadding}px;
-  }
-
-  h1.pequeno {
-    font-size: 42px;
-    font-weight: bold;
-    padding: ${metrics.basePadding}px;
-  }
-
-  div.info {
-    display: flex;
-    flex-direction: row;
-    padding: 0px ${metrics.basePadding}px;
-    padding-bottom: ${metrics.basePadding * 3}px;
-
-    flex-wrap: wrap;
-    flex-grow: 1;
-
-    p {
-      padding: ${metrics.basePadding / 2}px 0px;
-      margin-right: ${metrics.baseMargin * 4}px;
-
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: ${metrics.baseMargin / 2}px;
-      }
-
-      span {
-        font-weight: bold;
-        padding: 0px 5px;
-      }
-
-      &:last-child {
-        padding: 0px;
-      }
-    }
-  }
-
   img {
     max-width: 100%;
   }
+`;
+
+export const Title = styled.h1`
+  font-size: ${({ big }) => (big ? "54" : "42")}px;
+  font-weight: bold;
+  padding: ${metrics.basePadding}px;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 0px ${metrics.basePadding}px;
+  padding-bottom: ${metrics.basePadding * 3}px;
+
+  flex-wrap: wrap;
+  flex-grow: 1;
 `;
 
 export const Loading = styled.div`
@@ -88,8 +68,8 @@ export const Loading = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: ${metrics.basePadding * 3}px ${metrics.basePadding}px;
-
+  padding: 0px ${metrics.basePadding}px ${metrics.basePadding * 2}px;
+  text-align: justify;
   line-height: 2;
   font-size: 19px;
 

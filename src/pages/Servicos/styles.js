@@ -45,6 +45,7 @@ export const Container = styled.div`
   color: ${colors.secundary};
 
   h1 {
+    padding: 0 ${metrics.basePadding}px;
     padding-top: ${metrics.basePadding}px;
 
     text-align: center;
@@ -52,7 +53,6 @@ export const Container = styled.div`
 
   max-width: 800px;
   margin: 0 auto;
-  padding: ${metrics.basePadding}px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -61,7 +61,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 100px 0px 50px;
+  margin: 50px 0px 50px;
 
   &:before {
     content: "";
@@ -92,10 +92,11 @@ export const ContentWrapper = styled.div`
   position: relative;
 `;
 
-export const Content = styled.div`
+export const Service = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 270px;
   max-width: 300px;
   margin: ${metrics.baseMargin * 2}px;
   padding-bottom: ${metrics.basePadding * 2}px;
@@ -123,6 +124,7 @@ export const Content = styled.div`
     width: 100%;
     padding: 0px ${metrics.basePadding}px;
     flex: 1;
+    color: ${colors.secundary};
   }
 
   &:after {

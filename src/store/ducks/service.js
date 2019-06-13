@@ -19,14 +19,7 @@ export const Types = {
 
 const INITIAL_STATE = {
   loading: false,
-  response: {
-    id: 0,
-    icon_id: 0,
-    title: "",
-    description: "",
-    long_description: "",
-    department: ""
-  },
+  services: [],
   service: {
     id: 0,
     icon_id: 0,
@@ -48,7 +41,7 @@ export default function servicos(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: false,
-        response: action.payload.response
+        services: action.payload.response
       };
     case Types.INDEX_FAIL:
       toast.warn(action.payload.message);
@@ -87,8 +80,7 @@ export default function servicos(state = INITIAL_STATE, action) {
 
 export const Creators = {
   indexRequest: () => ({
-    type: Types.INDEX_REQUEST,
-    payload: {}
+    type: Types.INDEX_REQUEST
   }),
   indexSuccess: response => ({
     type: Types.INDEX_SUCCESS,
