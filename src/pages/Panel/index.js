@@ -15,6 +15,7 @@ import UparImagem from "./UparImagem";
 import EditarPost from "./EditarPost";
 import CriarPost from "./CriarPost";
 
+import { Helmet } from "react-helmet";
 class Panel extends Component {
   state = {
     page: "criar"
@@ -41,6 +42,9 @@ class Panel extends Component {
   render() {
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Painel</title>
+        </Helmet>
         <SideBar>
           <Items>
             <Item

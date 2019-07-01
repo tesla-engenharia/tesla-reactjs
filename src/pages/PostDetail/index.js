@@ -22,6 +22,8 @@ import "~/styles/loading.css";
 
 import { Container, Loading, Content } from "./styles";
 
+import { Helmet } from "react-helmet";
+
 class PostDetail extends Component {
   state = {};
 
@@ -67,9 +69,12 @@ class PostDetail extends Component {
 
   render() {
     const { loading, post } = this.props.blog;
-
+    console.tron.log(post);
     const Detalhes = () => (
       <Fragment>
+        <Helmet>
+          <title>Tesla Engenharia | {post.title}</title>
+        </Helmet>
         <MediaQuery query="(max-width: 600px)">
           <h1 className="pequeno">{post.title}</h1>
         </MediaQuery>

@@ -73,7 +73,9 @@ class Header extends Component {
         <Toolbox>
           <MediaQuery query={`(min-width: ${metrics.contentWidth}px)`}>
             <Navigation>
-              <Logo src={Tau} alt="Logotipo da Tesla" />
+              <a href="https://empresajuniortesla.com">
+                <Logo src={Tau} alt="Logotipo da Tesla" />
+              </a>
 
               <Menu>
                 {this.props.menu.pages.map((menuItem, actualIndex) => (

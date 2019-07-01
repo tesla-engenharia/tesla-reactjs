@@ -16,9 +16,11 @@ import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 import { Container, Loading } from "./styles";
 
+import { Helmet } from "react-helmet";
+
 function Servicos() {
   const { loading, services } = useSelector(state => state.service);
-
+  console.tron.log(services);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,6 +31,9 @@ function Servicos() {
 
   return (
     <Container>
+      <Helmet>
+        <title>Tesla Engenharia | Serviços</title>
+      </Helmet>
       {loading ? (
         <Loading>
           <MdRefresh className="icon-spin" />

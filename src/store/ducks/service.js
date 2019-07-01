@@ -26,7 +26,10 @@ const INITIAL_STATE = {
     title: "",
     description: "",
     long_description: "",
-    department: ""
+    department: "",
+    file: {
+      url: ""
+    }
   }
 };
 

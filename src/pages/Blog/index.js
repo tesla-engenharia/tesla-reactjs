@@ -29,6 +29,8 @@ import {
   Wrapper
 } from "./styles";
 
+import { Helmet } from "react-helmet";
+
 class Blog extends Component {
   static propTypes = {
     indexRequest: PropTypes.func.isRequired,
@@ -84,9 +86,12 @@ class Blog extends Component {
   render() {
     const { loading, response } = this.props.blog;
     const { page, lastPage, data } = response;
-    console.tron.log(this.props.blog);
+    console.tron.log(data);
     const Lista = () => (
       <div>
+        <Helmet>
+          <title>Tesla Engenharia | Blog</title>
+        </Helmet>
         {response.data &&
           response.data.map(post => (
             <Post

@@ -11,8 +11,13 @@ import { colors } from "~/styles";
 import biblioteca from "~/assets/biblioteca.png";
 import papeis from "~/assets/papeis.png";
 
+import { Helmet } from "react-helmet";
+
 const Home = () => (
   <Background>
+    <Helmet>
+      <title>Tesla Engenharia</title>
+    </Helmet>
     <BackgroundColor color={colors.white}>
       <Container>
         <Box>

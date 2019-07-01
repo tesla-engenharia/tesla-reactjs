@@ -4,9 +4,37 @@ import { colors, metrics } from "~/styles";
 
 export const DetailWrapper = styled.div``;
 
+export const Portfolio = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  position: relative;
+`;
+
 export const Job = styled.div`
   display: flex;
-  flex-shrink: 1;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  img {
+    width: 350px;
+  }
+`;
+
+export const JobTitle = styled.div`
+  padding-bottom: 10px;
+`;
+
+export const JobInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+`;
+
+export const JobDescription = styled.div`
+  text-align: justify;
 `;
 
 export const Container = styled.div`
