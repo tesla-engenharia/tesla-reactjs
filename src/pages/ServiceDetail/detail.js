@@ -23,7 +23,6 @@ import { Helmet } from "react-helmet";
 
 export default function Detail({ service }) {
   const { title, departament, long_description, jobs } = service;
-  console.tron.log(jobs);
   function isEmpty(obj) {
     for (var key in obj) {
       if (obj.hasOwnProperty(key)) return false;
@@ -50,7 +49,7 @@ export default function Detail({ service }) {
       {empty ? (
         ""
       ) : (
-        <div>
+        <>
           <MediaQuery query="(max-width: 600px)">
             <Title>Alguns de nossos serviços</Title>
           </MediaQuery>
@@ -77,7 +76,7 @@ export default function Detail({ service }) {
                 </Job>
               ))}
           </Portfolio>
-        </div>
+        </>
       )}
     </DetailWrapper>
   );

@@ -20,7 +20,6 @@ import { Helmet } from "react-helmet";
 
 function Servicos() {
   const { loading, services } = useSelector(state => state.service);
-  console.tron.log(services);
   const dispatch = useDispatch();
 
   useEffect(() => {

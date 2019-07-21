@@ -39,10 +39,10 @@ class Header extends Component {
 
   componentDidMount() {
     const { location } = this.props;
-
     const active = this.props.menu.pages.find(
       menuItem => menuItem.page === location.pathname
     );
+    console.tron.log(active);
 
     if (active) {
       this.props.updateActive(active);
@@ -73,9 +73,9 @@ class Header extends Component {
         <Toolbox>
           <MediaQuery query={`(min-width: ${metrics.contentWidth}px)`}>
             <Navigation>
-              <a href="https://empresajuniortesla.com">
+              <Link to="/">
                 <Logo src={Tau} alt="Logotipo da Tesla" />
-              </a>
+              </Link>
 
               <Menu>
                 {this.props.menu.pages.map((menuItem, actualIndex) => (
