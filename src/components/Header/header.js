@@ -110,7 +110,9 @@ class Header extends Component {
 
           <MediaQuery query={`(max-width: ${metrics.contentWidth}px)`}>
             <Navigation>
-              <Logo src={Tau} alt="Logotipo da Tesla" mobile={true} />
+              <Link to="/">
+                <Logo src={Tau} alt="Logotipo da Tesla" mobile={true} />
+              </Link>
               <button type="button" onClick={this.handleOpenSideDrawer}>
                 <FaBars />
               </button>

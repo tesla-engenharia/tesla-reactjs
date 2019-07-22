@@ -17,7 +17,7 @@ export const Job = styled.div`
   display: flex;
   flex-direction: ${({ big }) => (big ? "row" : "column")};
   align-items: center;
-  margin: 10px;
+  margin: ${({ big }) => (big ? "10" : "15")}px;
   img {
     width: 350px;
   }
