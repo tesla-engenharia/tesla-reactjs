@@ -69,7 +69,6 @@ class PostDetail extends Component {
 
   render() {
     const { loading, post } = this.props.blog;
-    console.tron.log(post);
     const Detalhes = () => (
       <Fragment>
         <Helmet>

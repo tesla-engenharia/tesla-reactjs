@@ -86,7 +86,6 @@ class Blog extends Component {
   render() {
     const { loading, response } = this.props.blog;
     const { page, lastPage, data } = response;
-    console.tron.log(data);
     const Lista = () => (
       <div>
         <Helmet>
