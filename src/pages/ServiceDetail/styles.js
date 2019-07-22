@@ -15,7 +15,7 @@ export const Portfolio = styled.div`
 
 export const Job = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ big }) => (big ? "row" : "column")};
   align-items: center;
   margin: 10px;
   img {
@@ -25,6 +25,7 @@ export const Job = styled.div`
 
 export const JobTitle = styled.div`
   padding-bottom: 10px;
+  font-size: 20px;
 `;
 
 export const JobInfo = styled.div`
@@ -57,6 +58,12 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   font-size: ${({ big }) => (big ? "54" : "42")}px;
+  font-weight: bold;
+  padding: ${metrics.basePadding}px;
+`;
+
+export const Title2 = styled.h1`
+  font-size: ${({ big }) => (big ? "36" : "28")}px;
   font-weight: bold;
   padding: ${metrics.basePadding}px;
 `;

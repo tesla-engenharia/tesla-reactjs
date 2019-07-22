@@ -12,6 +12,7 @@ import {
   Info,
   DetailWrapper,
   Title,
+  Title2,
   Portfolio,
   Job,
   JobInfo,
@@ -51,29 +52,54 @@ export default function Detail({ service }) {
       ) : (
         <>
           <MediaQuery query="(max-width: 600px)">
-            <Title>Alguns de nossos projetos</Title>
+            <Title2>Alguns de nossos projetos</Title2>
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
-            <Title big>Alguns de nossos projetos</Title>
+            <Title2 big>Alguns de nossos projetos</Title2>
             <h1>{jobs.job}</h1>
           </MediaQuery>
           <Portfolio>
             {jobs &&
               jobs.map(job => (
-                <Job>
-                  <img
-                    src={
-                      process.env.REACT_APP_API_URL + "/files/" + job.file_id
-                    }
-                    alt="Imagem do serviço"
-                  />
-                  <JobInfo>
-                    <JobTitle>
-                      <strong>{job.title}</strong>
-                    </JobTitle>
-                    <JobDescription>{job.description}</JobDescription>
-                  </JobInfo>
-                </Job>
+                <>
+                  <MediaQuery query="(max-width: 600px)">
+                    <Job>
+                      <img
+                        src={
+                          process.env.REACT_APP_API_URL +
+                          "/files/" +
+                          job.file_id
+                        }
+                        alt="Imagem do serviço"
+                      />
+                      <JobInfo>
+                        <JobTitle>
+                          <strong>{job.title}</strong>
+                        </JobTitle>
+                        <JobDescription>{job.description}</JobDescription>
+                      </JobInfo>
+                    </Job>
+                  </MediaQuery>
+
+                  <MediaQuery query="(min-width: 600px)">
+                    <Job big>
+                      <img
+                        src={
+                          process.env.REACT_APP_API_URL +
+                          "/files/" +
+                          job.file_id
+                        }
+                        alt="Imagem do serviço"
+                      />
+                      <JobInfo>
+                        <JobTitle>
+                          <strong>{job.title}</strong>
+                        </JobTitle>
+                        <JobDescription>{job.description}</JobDescription>
+                      </JobInfo>
+                    </Job>
+                  </MediaQuery>
+                </>
               ))}
           </Portfolio>
         </>
