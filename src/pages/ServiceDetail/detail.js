@@ -51,10 +51,10 @@ export default function Detail({ service }) {
       ) : (
         <>
           <MediaQuery query="(max-width: 600px)">
-            <Title>Alguns de nossos serviços</Title>
+            <Title>Alguns de nossos projetos</Title>
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
-            <Title big>Alguns de nossos serviços</Title>
+            <Title big>Alguns de nossos projetos</Title>
             <h1>{jobs.job}</h1>
           </MediaQuery>
           <Portfolio>
