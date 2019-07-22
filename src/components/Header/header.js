@@ -42,7 +42,6 @@ class Header extends Component {
     const active = this.props.menu.pages.find(
       menuItem => menuItem.page === location.pathname
     );
-    console.tron.log(active);
 
     if (active) {
       this.props.updateActive(active);
