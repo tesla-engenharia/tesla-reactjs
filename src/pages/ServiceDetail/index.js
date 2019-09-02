@@ -21,6 +21,8 @@ import { Container, Loading } from "./styles";
 
 import Detail from "./detail";
 
+import { Helmet } from "react-helmet";
+
 function ServiceDetail(props) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,6 +46,16 @@ function ServiceDetail(props) {
 
   return (
     <Container>
+      <Helmet>
+        <title>Tesla Engenharia | {service.title}</title>
+        <meta name={service.title} description={service.description} />
+        <meta name="keywords" content={service.title} />
+        <meta name="keywords" content={service.departament} />
+        <meta
+          name="keywords"
+          content="Tesla Engenharia, eficiência energética, energia solar, projeto elétrico, empresa júnior, Palmas, Tocantins"
+        />
+      </Helmet>
       {loading ? (
         <Loading>
           <MdRefresh className="icon-spin" />

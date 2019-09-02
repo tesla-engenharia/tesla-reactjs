@@ -90,6 +90,14 @@ class Blog extends Component {
       <div>
         <Helmet>
           <title>Tesla Engenharia | Blog</title>
+          <meta
+            name="Blog Tesla Engenharia"
+            description="Dicas e assuntos relevantes"
+          />
+          <meta
+            name="keywords"
+            content="Tesla Engenharia, blog, dicas, conteudo,  Energia solar, fotovoltaica, fotovoltaico, eficiência energética"
+          />
         </Helmet>
         {response.data &&
           response.data.map(post => (

@@ -32,6 +32,14 @@ function Servicos() {
     <Container>
       <Helmet>
         <title>Tesla Engenharia | Serviços</title>
+        <meta
+          name="O que fazemos"
+          description="Conheça nossos serviços e soluções"
+        />
+        <meta
+          name="keywords"
+          content="Tesl Engenharia, Empresa Júnior, MEJ, Movimento Empresa Júnior, UFT, Universidade Federal do Tocantins, Palmas, servicos, eficiência energética, projéto elétrico, projeto, laudo técnico, SPDA, pára-raio, para raio"
+        />
       </Helmet>
       {loading ? (
         <Loading>

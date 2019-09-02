@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as BlogActions } from "~/store/ducks/blog";
 
+import { Helmet } from "react-helmet";
+
 const instrucoes =
   "Para a correta estilização dos posts, você vai precisar saber o mínimo de HTML. \nTente utilizar, no conteúdo, componentes como:" +
   "\n<p>TEXTO</p> para parágrafos" +
@@ -45,6 +47,14 @@ class CriarPost extends Component {
 
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Criar post</title>
+          <meta
+            name="Página de criação de post"
+            description="Adicione o conteúdo em HTML para criar um post"
+          />
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <form onSubmit={this.handleSubmitPost}>
           <input
             type="text"

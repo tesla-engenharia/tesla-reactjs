@@ -15,6 +15,8 @@ import "~/styles/loading.css";
 
 import { Container, LoginBox } from "./styles";
 
+import { Helmet } from "react-helmet";
+
 class Login extends Component {
   state = {
     email: "",
@@ -38,6 +40,15 @@ class Login extends Component {
 
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Login</title>
+          <meta
+            name="Login"
+            description="Faça seu login para acessar o painel"
+          />
+          <meta name="robots" content="noindex" />
+          <meta name="keywords" content="Tesla Engenharia, login" />
+        </Helmet>
         <LoginBox>
           <h1>Login</h1>
           <form onSubmit={this.handleSubmitForm}>

@@ -10,6 +10,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "~/styles/toast.css";
 
+import { Helmet } from "react-helmet";
+
 export default class UparImagem extends Component {
   state = {
     file: null,
@@ -40,6 +42,14 @@ export default class UparImagem extends Component {
   render() {
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Upload de arquivo</title>
+          <meta
+            name="Upload de arquivo"
+            description="Selecione um arquivo para fazer o upload"
+          />
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <form>
           <input type="file" onChange={this.handleChangeFile} required />
           <button type="submit" onClick={this.handleFileUpload}>

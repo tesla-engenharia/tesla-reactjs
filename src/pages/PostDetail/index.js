@@ -73,6 +73,12 @@ class PostDetail extends Component {
       <Fragment>
         <Helmet>
           <title>Tesla Engenharia | {post.title}</title>
+          <meta name={post.title} description="Saiba mais" />
+          <meta
+            name="keywords"
+            content="Tesla Engenharia, UFT, Universidade Federal do Tocantis, MEJ, Movimento Empresa Júnior, empresa júnior, conteúdo"
+          />
+          <meta name="keywords" content={post.title} />
         </Helmet>
         <MediaQuery query="(max-width: 600px)">
           <h1 className="pequeno">{post.title}</h1>

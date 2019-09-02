@@ -17,12 +17,21 @@ const Home = () => (
   <Background>
     <Helmet>
       <title>Tesla Engenharia</title>
+      <meta
+        name="Tesla Engenharia"
+        description="A Tesla Engenharia é a empresa júnior do curso de Engenharia Elétrica da Universidade Federal do Tocantins."
+      />
+      <meta
+        name="keywords"
+        content="Tesla Engenharia, Universidade Federal do Tocantins, UFT, MEJ, Movimento Empresa Júnior, empresa júnior"
+      />
+      />
     </Helmet>
     <BackgroundColor color={colors.white}>
       <Container>
         <Box>
           <Content>
-            <h2>Engenharia Elétrica aplicada do jeito certo</h2>
+            <h1>Engenharia Elétrica aplicada do jeito certo</h1>
             <p>
               A Tesla Engenharia é a empresa júnior do curso de Engenharia
               Elétrica da Universidade Federal do Tocantins.

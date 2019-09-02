@@ -17,6 +17,7 @@ import "~/styles/loading.css";
 
 import { Container, LoginBox } from "./styles";
 
+import { Helmet } from "react-helmet";
 class ResetPassword extends Component {
   state = {
     password: "",
@@ -53,6 +54,18 @@ class ResetPassword extends Component {
     return (
       <Container>
         <LoginBox>
+          <Helmet>
+            <title>Tesla Engenharia | Recuperação de senha</title>
+            <meta
+              name="Recuperação de senha"
+              description="Escolha uma senha segura e de fácil memorização"
+            />
+            <meta
+              name="keywords"
+              content="Tesla Engenharia, recuperar senha, esqueci a senha"
+            />
+            />
+          </Helmet>
           <h1>Resetar a senha</h1>
           <form onSubmit={this.handleSubmitForm}>
             <input

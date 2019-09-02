@@ -9,7 +9,6 @@ import "~/styles/loading.css";
 
 import {
   Content,
-  Info,
   DetailWrapper,
   Title,
   Title2,
@@ -23,7 +22,7 @@ import {
 import { Helmet } from "react-helmet";
 
 export default function Detail({ service }) {
-  const { title, departament, long_description, jobs } = service;
+  const { title, long_description, jobs } = service;
   function isEmpty(obj) {
     for (var key in obj) {
       if (obj.hasOwnProperty(key)) return false;
@@ -42,9 +41,6 @@ export default function Detail({ service }) {
       <MediaQuery query="(min-width: 600px)">
         <Title big>{title}</Title>
       </MediaQuery>
-      <Info>
-        <strong>{departament}</strong>
-      </Info>
       <Content>{long_description}</Content>
 
       {empty ? (

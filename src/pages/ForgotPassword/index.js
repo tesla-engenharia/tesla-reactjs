@@ -15,6 +15,8 @@ import "~/styles/loading.css";
 
 import { Container, LoginBox } from "./styles";
 
+import { Helmet } from "react-helmet";
+
 class ForgotPassword extends Component {
   state = {
     email: ""
@@ -37,6 +39,17 @@ class ForgotPassword extends Component {
 
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Esqueci a senha</title>
+          <meta
+            name="Esqueci a senha"
+            description="Insira seu e-mail para recuperar a senha"
+          />
+          <meta
+            name="keywords"
+            content="senha, recuperação de senha, esqueci a senha, Tesla Engenharia"
+          />
+        </Helmet>
         <LoginBox>
           <h1>Esqueci a senha</h1>
           <form onSubmit={this.handleSubmitForm}>

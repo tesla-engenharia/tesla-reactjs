@@ -15,6 +15,7 @@ import "~/styles/loading.css";
 
 import { Container, LoginBox } from "./styles";
 
+import { Helmet } from "react-helmet";
 class UserCreate extends Component {
   state = {
     name: "",
@@ -48,6 +49,14 @@ class UserCreate extends Component {
 
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | Criar conta</title>
+          <meta
+            name="Criar conta"
+            description="Crie sua conta para acessar o painel"
+          />
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <LoginBox>
           <h1>Criação de conta</h1>
           <form onSubmit={this.handleSubmitForm}>
