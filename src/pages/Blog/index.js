@@ -87,7 +87,26 @@ class Blog extends Component {
     const { loading, response } = this.props.blog;
     const { page, lastPage, data } = response;
     const Lista = () => (
-      <div>
+      <div itemtype="https://schema.org/Blog">
+        {response.data &&
+          response.data.map(post => (
+            <Post
+              itemprop="blogPost"
+              key={post.id}
+              background={post.file.url}
+              onClick={() => this.redirectToDetails(post.id)}
+            >
+              <Title itemprop="headline">{post.title}</Title>
+              <Info>
+                por <span>{post.user.name}</span> {post.fromNow}
+              </Info>
+            </Post>
+          ))}
+      </div>
+    );
+
+    return (
+      <Wrapper>
         <Helmet>
           <title>Tesla Engenharia | Blog</title>
           <meta
@@ -99,24 +118,6 @@ class Blog extends Component {
             content="Tesla Engenharia, blog, dicas, conteudo,  Energia solar, fotovoltaica, fotovoltaico, eficiência energética"
           />
         </Helmet>
-        {response.data &&
-          response.data.map(post => (
-            <Post
-              key={post.id}
-              background={post.file.url}
-              onClick={() => this.redirectToDetails(post.id)}
-            >
-              <Title>{post.title}</Title>
-              <Info>
-                por <span>{post.user.name}</span> {post.fromNow}
-              </Info>
-            </Post>
-          ))}
-      </div>
-    );
-
-    return (
-      <Wrapper>
         <Container>
           {loading ? (
             <Loading>

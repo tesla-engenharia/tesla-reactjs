@@ -70,21 +70,16 @@ class PostDetail extends Component {
   render() {
     const { loading, post } = this.props.blog;
     const Detalhes = () => (
-      <Fragment>
-        <Helmet>
-          <title>Tesla Engenharia | {post.title}</title>
-          <meta name={post.title} description="Saiba mais" />
-          <meta
-            name="keywords"
-            content="Tesla Engenharia, UFT, Universidade Federal do Tocantis, MEJ, Movimento Empresa Júnior, empresa júnior, conteúdo"
-          />
-          <meta name="keywords" content={post.title} />
-        </Helmet>
+      <Fragment itemtype="https://schema.org/BlogPosting">
         <MediaQuery query="(max-width: 600px)">
-          <h1 className="pequeno">{post.title}</h1>
+          <h1 itemprop="name" className="pequeno">
+            {post.title}
+          </h1>
         </MediaQuery>
         <MediaQuery query="(min-width: 600px)">
-          <h1 className="grande">{post.title}</h1>
+          <h1 itemprop="name" className="grande">
+            {post.title}
+          </h1>
         </MediaQuery>
         <div className="info">
           <p>
@@ -94,15 +89,27 @@ class PostDetail extends Component {
             <FiClock /> {post.readingTime}
           </p>
         </div>
-        <img src={post.file.url} alt="Imagem do post" />
+        <img itemprop="image" src={post.file.url} alt="Imagem do post" />
         <Content>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div
+            itemprop="text"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </Content>
       </Fragment>
     );
 
     return (
       <Container>
+        <Helmet>
+          <title>Tesla Engenharia | {post.title}</title>
+          <meta name={post.title} description="Saiba mais" />
+          <meta
+            name="keywords"
+            content="Tesla Engenharia, UFT, Universidade Federal do Tocantis, MEJ, Movimento Empresa Júnior, empresa júnior, conteúdo"
+          />
+          <meta name="keywords" content={post.title} />
+        </Helmet>
         {loading ? (
           <Loading>
             <MdRefresh className="icon-spin" />

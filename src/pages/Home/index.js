@@ -30,9 +30,9 @@ const Home = () => (
     <BackgroundColor color={colors.white}>
       <Container>
         <Box>
-          <Content>
-            <h1>Engenharia Elétrica aplicada do jeito certo</h1>
-            <p>
+          <Content itemtype="https://schema.org/LocalBusiness">
+            <h1 itemprop="name">Engenharia Elétrica aplicada do jeito certo</h1>
+            <p itemprop="description">
               A Tesla Engenharia é a empresa júnior do curso de Engenharia
               Elétrica da Universidade Federal do Tocantins.
             </p>

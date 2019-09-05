@@ -59,8 +59,9 @@ export default function Detail({ service }) {
               jobs.map(job => (
                 <>
                   <MediaQuery query="(max-width: 600px)">
-                    <Job>
+                    <Job itemtype="https://schema.org/Service">
                       <img
+                        itemprop="image"
                         src={
                           process.env.REACT_APP_API_URL +
                           "/files/" +
@@ -70,16 +71,19 @@ export default function Detail({ service }) {
                       />
                       <JobInfo>
                         <JobTitle>
-                          <strong>{job.title}</strong>
+                          <strong itemprop="name">{job.title}</strong>
                         </JobTitle>
-                        <JobDescription>{job.description}</JobDescription>
+                        <JobDescription itemprop="description">
+                          {job.description}
+                        </JobDescription>
                       </JobInfo>
                     </Job>
                   </MediaQuery>
 
                   <MediaQuery query="(min-width: 600px)">
-                    <Job big>
+                    <Job big itemtype="https://schema.org/Service">
                       <img
+                        itemprop="image"
                         src={
                           process.env.REACT_APP_API_URL +
                           "/files/" +
@@ -89,9 +93,11 @@ export default function Detail({ service }) {
                       />
                       <JobInfo>
                         <JobTitle>
-                          <strong>{job.title}</strong>
+                          <strong itemprop="name">{job.title}</strong>
                         </JobTitle>
-                        <JobDescription>{job.description}</JobDescription>
+                        <JobDescription itemprop="description">
+                          {job.description}
+                        </JobDescription>
                       </JobInfo>
                     </Job>
                   </MediaQuery>

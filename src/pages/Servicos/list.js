@@ -16,15 +16,16 @@ export default function ListServicos({ lista }) {
             to={"/servicos/" + service.id}
             style={{ textDecoration: "none" }}
           >
-            <Service>
-              <p>{service.title}</p>
+            <Service itemtype="https://schema.org/Service">
+              <p itemprop="name">{service.title}</p>
               <img
+                itemprop="image"
                 src={
                   process.env.REACT_APP_API_URL + "/files/" + service.icon_id
                 }
                 alt={service.title}
               />
-              <span>{service.description}</span>
+              <span itemprop="description">{service.description}</span>
             </Service>
           </Link>
         ))}
