@@ -1,0 +1,3 @@
+Sitemap: https://empresajuniortesla.com/sitemap.xml
+User-agent:*
+Disallow:
