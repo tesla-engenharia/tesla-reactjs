@@ -5,11 +5,6 @@
 <url> <loc>https://empresajuniortesla.com/servicos</loc> </url>
 <url> <loc>https://empresajuniortesla.com/servicos/:id</loc> </url>
 <url> <loc>https://empresajuniortesla.com/blog</loc> </url>
-<url> <loc>https://empresajuniortesla.com/login</loc> </url>
-<url> <loc>https://empresajuniortesla.com/panel</loc> </url>
-<url> <loc>https://empresajuniortesla.com/forgot</loc> </url>
-<url> <loc>https://empresajuniortesla.com/reset</loc> </url>
-<url> <loc>https://empresajuniortesla.com/user/create</loc> </url>
 <url> <loc>https://empresajuniortesla.com/post/:id</loc> </url>
 <url> <loc>https://empresajuniortesla.com/*</loc> </url>
 </urlset>
