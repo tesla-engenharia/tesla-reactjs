@@ -14,7 +14,6 @@ import papeis from "~/assets/papeis.png";
 import { Helmet } from "react-helmet";
 
 const Home = () => (
-      window.location.href = "https://empresajuniortesla.com"
   <Background>
     <Helmet>
       <title>Tesla Engenharia Serviços e Consultoria</title>
