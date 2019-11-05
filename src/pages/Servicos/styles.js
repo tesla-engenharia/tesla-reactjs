@@ -93,6 +93,26 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Service = styled.div`
+  h3 {
+    display: inline-block;
+    text-decoration: none;
+
+    margin-top: 5px;
+    padding: ${metrics.basePadding / 3}px ${metrics.basePadding}px;
+
+    border-radius: ${metrics.baseRadius * 2}px;
+
+    font-weight: bold;
+    font-size: 1.1em;
+    color: ${colors.primary};
+    background-color: ${colors.lighter};
+
+    transition: opacity 150ms ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
